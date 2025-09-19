@@ -1,0 +1,32 @@
+package main
+
+import (
+	"fmt"
+)
+
+func areaOfMaxDiagonal(dimensions [][]int) int {
+	var maxDiag int
+	var maxArea int
+
+	for _, dims := range dimensions {
+		diag := dims[0]*dims[0] + dims[1]*dims[1]
+
+		if diag == maxDiag {
+			newArea := dims[0] * dims[1]
+
+			if newArea > maxArea {
+				maxArea = newArea
+			}
+		} else if diag > maxDiag {
+			maxDiag = diag
+			maxArea = dims[0] * dims[1]
+		}
+
+	}
+
+	return maxArea
+}
+
+func main() {
+	fmt.Println(areaOfMaxDiagonal([][]int{{4, 3}, {3, 4}}))
+}
