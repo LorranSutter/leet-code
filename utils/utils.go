@@ -27,3 +27,33 @@ func PrintList(list *ListNode) {
 	}
 	fmt.Println()
 }
+
+func EqualListNodes(l1 *ListNode, l2 *ListNode) bool {
+	for l1 != nil && l2 != nil {
+		if l1.Val != l2.Val {
+			return false
+		}
+		l1 = l1.Next
+		l2 = l2.Next
+	}
+
+	if l1 != nil || l2 != nil {
+		return false
+	}
+
+	return true
+}
+
+func EqualSlices(s1 []int, s2 []int) bool {
+	if len(s1) != len(s2) {
+		return false
+	}
+
+	for i := range s1 {
+		if s1[i] != s2[i] {
+			return false
+		}
+	}
+
+	return true
+}
