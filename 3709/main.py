@@ -8,7 +8,6 @@ class ExamTracker:
         self.scores = [0]
 
     def record(self, time: int, score: int) -> None:
-        # TODO Have to use prefix sum for the scores
         self.times.append(time)
         self.scores.append(score + self.scores[-1])
 
@@ -16,6 +15,9 @@ class ExamTracker:
         startTime_idx = bisect.bisect_left(self.times, startTime)
         endTime_idx = bisect.bisect_right(self.times, endTime)
 
+        # This works, but TLE
+        # startTime_idx = self.search(startTime)
+        # endTime_idx = self.search(endTime)
         # total_score = 0
         # for i in range(startTime_idx , endTime_idx + 1):
         #     if startTime <= self.times[i] <= endTime:
