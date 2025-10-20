@@ -44,13 +44,15 @@ func EqualListNodes(l1 *ListNode, l2 *ListNode) bool {
 	return true
 }
 
-func EqualSlices(s1 []int, s2 []int) bool {
+func EqualSlices[T comparable](s1 []T, s2 []T) bool {
 	if len(s1) != len(s2) {
+		fmt.Println("Different lengths", len(s1), len(s2))
 		return false
 	}
 
 	for i := range s1 {
 		if s1[i] != s2[i] {
+			fmt.Println("Different values", s1[i], s2[i])
 			return false
 		}
 	}
