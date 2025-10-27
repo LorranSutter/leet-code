@@ -13,15 +13,9 @@ func numberOfBeams(bank []string) int {
 			}
 		}
 
-		if prev == 0 {
-			prev = current
-			continue
-		}
-
-		if prev > 0 && current > 0 {
+		if current > 0 {
 			lasers += prev * current
-			prev, current = current, 0
-			continue
+			prev = current
 		}
 	}
 
