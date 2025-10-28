@@ -28,6 +28,12 @@ func PrintList(list *ListNode) {
 	fmt.Println()
 }
 
+func PrintMatrix[T any](m [][]T) {
+	for i := range m {
+		fmt.Println(m[i])
+	}
+}
+
 func EqualListNodes(l1 *ListNode, l2 *ListNode) bool {
 	for l1 != nil && l2 != nil {
 		if l1.Val != l2.Val {
