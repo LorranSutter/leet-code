@@ -31,6 +31,6 @@ func removeAnagrams(words []string) []string {
 }
 
 func main() {
-	fmt.Println(utils.EqualSlices(removeAnagrams([]string{"abba", "baba", "bbaa", "cd", "cd"}), []string{"abba", "cd"}))
-	fmt.Println(utils.EqualSlices(removeAnagrams([]string{"a", "b", "c", "d", "e"}), []string{"a", "b", "c", "d", "e"}))
+	fmt.Println(utils.DeepEqualSlices(removeAnagrams([]string{"abba", "baba", "bbaa", "cd", "cd"}), []string{"abba", "cd"}))
+	fmt.Println(utils.DeepEqualSlices(removeAnagrams([]string{"a", "b", "c", "d", "e"}), []string{"a", "b", "c", "d", "e"}))
 }

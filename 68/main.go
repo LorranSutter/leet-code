@@ -77,7 +77,7 @@ func justifySentence(row Row, maxWidth int, lastRow bool) string {
 
 func main() {
 	fmt.Println(
-		utils.EqualSlices(
+		utils.DeepEqualSlices(
 			fullJustify([]string{"This", "is", "an", "example", "of", "text", "justification."}, 16),
 			[]string{
 				"This    is    an",
@@ -87,7 +87,7 @@ func main() {
 		),
 	)
 	fmt.Println(
-		utils.EqualSlices(
+		utils.DeepEqualSlices(
 			fullJustify([]string{"What", "must", "be", "acknowledgment", "shall", "be"}, 16),
 			[]string{
 				"What   must   be",
@@ -97,7 +97,7 @@ func main() {
 		),
 	)
 	fmt.Println(
-		utils.EqualSlices(
+		utils.DeepEqualSlices(
 			fullJustify([]string{"Science", "is", "what", "we", "understand", "well", "enough", "to", "explain", "to", "a", "computer.", "Art", "is", "everything", "else", "we", "do"}, 20),
 			[]string{
 				"Science  is  what we",

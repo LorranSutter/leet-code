@@ -34,7 +34,7 @@ func PrintMatrix[T any](m [][]T) {
 	}
 }
 
-func EqualListNodes(l1 *ListNode, l2 *ListNode) bool {
+func EqualListNodes(l1, l2 *ListNode) bool {
 	for l1 != nil && l2 != nil {
 		if l1.Val != l2.Val {
 			return false
@@ -50,7 +50,7 @@ func EqualListNodes(l1 *ListNode, l2 *ListNode) bool {
 	return true
 }
 
-func EqualSlices[T comparable](s1 []T, s2 []T) bool {
+func DeepEqualSlices[T comparable](s1, s2 []T) bool {
 	if len(s1) != len(s2) {
 		fmt.Println("Different lengths", len(s1), len(s2))
 		return false
@@ -63,5 +63,33 @@ func EqualSlices[T comparable](s1 []T, s2 []T) bool {
 		}
 	}
 
+	return true
+}
+
+func EqualSlices[T comparable](s1, s2 []T) bool {
+	if len(s1) != len(s2) {
+		fmt.Println("Different lengths", len(s1), len(s2))
+		return false
+	}
+
+	counts := make(map[T]int)
+	for _, v := range s1 {
+		counts[v]++
+	}
+
+	for _, v := range s2 {
+		counts[v]--
+		if counts[v] < 0 {
+			fmt.Println("Element not foud or too many occurences", v)
+			return false
+		}
+	}
+
+	// All counts should be zero if slices are unordered equal
+	for _, count := range counts {
+		if count != 0 {
+			return false
+		}
+	}
 	return true
 }

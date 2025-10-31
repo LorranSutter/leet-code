@@ -26,7 +26,7 @@ func kidsWithCandies(candies []int, extraCandies int) []bool {
 }
 
 func main() {
-	fmt.Println(utils.EqualSlices(kidsWithCandies([]int{2, 3, 5, 1, 3}, 3), []bool{true, true, true, false, true}))
-	fmt.Println(utils.EqualSlices(kidsWithCandies([]int{4, 2, 1, 1, 2}, 1), []bool{true, false, false, false, false}))
-	fmt.Println(utils.EqualSlices(kidsWithCandies([]int{12, 1, 12}, 10), []bool{true, false, true}))
+	fmt.Println(utils.DeepEqualSlices(kidsWithCandies([]int{2, 3, 5, 1, 3}, 3), []bool{true, true, true, false, true}))
+	fmt.Println(utils.DeepEqualSlices(kidsWithCandies([]int{4, 2, 1, 1, 2}, 1), []bool{true, false, false, false, false}))
+	fmt.Println(utils.DeepEqualSlices(kidsWithCandies([]int{12, 1, 12}, 10), []bool{true, false, true}))
 }
