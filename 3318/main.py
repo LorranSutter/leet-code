@@ -13,7 +13,7 @@ class Solution:
         result = []
 
         sorted_freqs = sorted(freqs.items(), key=cmp_to_key(self.compare_frequencies))
-        x_sum = sum(sorted_freqs[i][0] * sorted_freqs[i][1] for i in range(min(x, len(freqs))))
+        x_sum = sum(freq[0] * freq[1] for freq in sorted_freqs[:x])
         result.append(x_sum)
 
         for i in range(1, len(nums) - k + 1):
@@ -25,7 +25,7 @@ class Solution:
             sorted_freqs = sorted(
                 freqs.items(), key=cmp_to_key(self.compare_frequencies)
             )
-            x_sum = sum(sorted_freqs[j][0] * sorted_freqs[j][1] for j in range(min(x, len(freqs))))
+            x_sum = sum(freq[0] * freq[1] for freq in sorted_freqs[:x])
             result.append(x_sum)
 
         return result
