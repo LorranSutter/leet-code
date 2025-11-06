@@ -7,7 +7,6 @@ import (
 
 func maxOperations(nums []int, k int) int {
 	sort.Ints(nums)
-	fmt.Println(nums)
 
 	start, end := 0, len(nums)-1
 	result := 0
