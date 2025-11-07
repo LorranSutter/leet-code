@@ -8,6 +8,10 @@ type ListNode struct {
 }
 
 func MakeList(nums []int) *ListNode {
+	if len(nums) == 0 {
+		return nil
+	}
+
 	head := &ListNode{Val: nums[len(nums)-1], Next: nil}
 
 	for i := len(nums) - 2; i >= 0; i-- {
