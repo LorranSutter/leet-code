@@ -7,6 +7,12 @@ type ListNode struct {
 	Next *ListNode
 }
 
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
 func MakeList(nums []int) *ListNode {
 	if len(nums) == 0 {
 		return nil
@@ -20,6 +26,37 @@ func MakeList(nums []int) *ListNode {
 	}
 
 	return head
+}
+
+func MakeTree(nums []int) *TreeNode {
+	if len(nums) == 0 {
+		return nil
+	}
+
+	root := &TreeNode{Val: nums[0]}
+
+	for i := 1; i < len(nums); i++ {
+		addTreeNode(root, nums[i])
+	}
+
+	return root
+}
+
+// Add TreeNode to the binary tree
+func addTreeNode(root *TreeNode, val int) {
+	if val < root.Val {
+		if root.Left == nil {
+			root.Left = &TreeNode{Val: val}
+		} else {
+			addTreeNode(root.Left, val)
+		}
+	} else {
+		if root.Right == nil {
+			root.Right = &TreeNode{Val: val}
+		} else {
+			addTreeNode(root.Right, val)
+		}
+	}
 }
 
 func PrintList(list *ListNode) {
