@@ -1,6 +1,8 @@
 package utils
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type ListNode struct {
 	Val  int
@@ -99,7 +101,7 @@ func DeepEqualSlices[T comparable](s1, s2 []T) bool {
 
 	for i := range s1 {
 		if s1[i] != s2[i] {
-			fmt.Println("Different values", s1[i], s2[i])
+			fmt.Printf("Different values at (%d): [s1 -> %v] [s2 -> %v]\n", i, s1[i], s2[i])
 			return false
 		}
 	}
@@ -132,5 +134,23 @@ func EqualSlices[T comparable](s1, s2 []T) bool {
 			return false
 		}
 	}
+	return true
+}
+
+func DeepEqualMatrix[T comparable](m1, m2 [][]T) bool {
+	if len(m1) != len(m2) {
+		fmt.Println("Different lengths", len(m1), len(m2))
+		return false
+	}
+
+	for i := range m1 {
+		for j := range m1[i] {
+			if m1[i][j] != m2[i][j] {
+				fmt.Printf("Different values at (%d,%d): [m1 -> %v] [m2 -> %v]\n", i, j, m1[i][j], m2[i][j])
+				return false
+			}
+		}
+	}
+
 	return true
 }
