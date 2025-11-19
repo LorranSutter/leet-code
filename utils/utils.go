@@ -30,6 +30,39 @@ func MakeList(nums []int) *ListNode {
 	return head
 }
 
+// MakeBinaryTreeFromLevelOrder creates a binary tree from level-order traversal array
+// where nil values are represented as -1
+func MakeBinaryTreeFromLevelOrder(nums []int, nullValue int) *TreeNode {
+	if len(nums) == 0 || nums[0] == nullValue {
+		return nil
+	}
+
+	root := &TreeNode{Val: nums[0]}
+	queue := []*TreeNode{root}
+	i := 1
+
+	for len(queue) > 0 && i < len(nums) {
+		current := queue[0]
+		queue = queue[1:]
+
+		// Process left child
+		if i < len(nums) && nums[i] != nullValue {
+			current.Left = &TreeNode{Val: nums[i]}
+			queue = append(queue, current.Left)
+		}
+		i++
+
+		// Process right child
+		if i < len(nums) && nums[i] != nullValue {
+			current.Right = &TreeNode{Val: nums[i]}
+			queue = append(queue, current.Right)
+		}
+		i++
+	}
+
+	return root
+}
+
 func MakeBinaryTree(nums []int) *TreeNode {
 	if len(nums) == 0 {
 		return nil
@@ -75,6 +108,16 @@ func PrintMatrix[T any](m [][]T) {
 	for i := range m {
 		fmt.Println(m[i])
 	}
+}
+
+func PrintTree(root *TreeNode) {
+	if root == nil {
+		return
+	}
+
+	fmt.Print(root.Val, " ")
+	PrintTree(root.Left)
+	PrintTree(root.Right)
 }
 
 func EqualListNodes(l1, l2 *ListNode) bool {
