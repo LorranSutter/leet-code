@@ -30,7 +30,7 @@ func MakeList(nums []int) *ListNode {
 	return head
 }
 
-func MakeTree(nums []int) *TreeNode {
+func MakeBinaryTree(nums []int) *TreeNode {
 	if len(nums) == 0 {
 		return nil
 	}
@@ -38,25 +38,25 @@ func MakeTree(nums []int) *TreeNode {
 	root := &TreeNode{Val: nums[0]}
 
 	for i := 1; i < len(nums); i++ {
-		addTreeNode(root, nums[i])
+		addBinaryTreeNode(root, nums[i])
 	}
 
 	return root
 }
 
 // Add TreeNode to the binary tree
-func addTreeNode(root *TreeNode, val int) {
+func addBinaryTreeNode(root *TreeNode, val int) {
 	if val < root.Val {
 		if root.Left == nil {
 			root.Left = &TreeNode{Val: val}
 		} else {
-			addTreeNode(root.Left, val)
+			addBinaryTreeNode(root.Left, val)
 		}
 	} else {
 		if root.Right == nil {
 			root.Right = &TreeNode{Val: val}
 		} else {
-			addTreeNode(root.Right, val)
+			addBinaryTreeNode(root.Right, val)
 		}
 	}
 }

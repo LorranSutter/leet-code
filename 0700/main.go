@@ -29,11 +29,11 @@ func searchBST(root *utils.TreeNode, val int) *utils.TreeNode {
 }
 
 func main() {
-	root := utils.MakeTree([]int{4, 2, 7, 1, 3})
+	root := utils.MakeBinaryTree([]int{4, 2, 7, 1, 3})
 	result := searchBST(root, 2)
 	fmt.Println(result.Val == 2)
 
-	root = utils.MakeTree([]int{4, 2, 7, 1, 3})
+	root = utils.MakeBinaryTree([]int{4, 2, 7, 1, 3})
 	result = searchBST(root, 5)
 	fmt.Println(result == nil)
 }
