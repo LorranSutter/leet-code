@@ -1,0 +1,51 @@
+package main
+
+import "fmt"
+
+// The idea here is to track the first and last occurrence of each letter in the string.
+// For each letter that appears at least twice, we look at the substring between its first
+// and last occurrence to find all unique letters that can form palindromic subsequences
+// with that letter as the first and last character.
+
+// There is some room for optmization
+// Instead of a map to track first and last occurrence, we can use two arrays of size 26 for the first and last occurrence
+
+func countPalindromicSubsequence(s string) int {
+	letterIds := make(map[rune][2]int)
+	palindromes := make(map[string]struct{})
+
+	for i, letter := range s {
+		if _, ok := letterIds[letter]; !ok {
+			letterIds[letter] = [2]int{i, 0}
+		} else {
+			letterIds[letter] = [2]int{letterIds[letter][0], i}
+		}
+	}
+
+	for letter, ids := range letterIds {
+		// Check if the current letter has at least two occurrences
+		if ids[1] == 0 {
+			continue
+		}
+
+		for i := ids[0] + 1; i < ids[len(ids)-1]; i++ {
+			newStr := string(letter) + string(s[i])
+			if _, ok := palindromes[newStr]; !ok {
+				palindromes[newStr] = struct{}{}
+			}
+		}
+
+	}
+
+	return len(palindromes)
+}
+
+func main() {
+	fmt.Println(countPalindromicSubsequence("aabca") == 3)
+	fmt.Println(countPalindromicSubsequence("adc") == 0)
+	fmt.Println(countPalindromicSubsequence("bbcbaba") == 4)
+	fmt.Println(countPalindromicSubsequence("bbaabb") == 2)
+	fmt.Println(countPalindromicSubsequence("aaaaaa") == 1)
+	fmt.Println(countPalindromicSubsequence("lhwtek") == 0)
+	fmt.Println(countPalindromicSubsequence("cbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbccb") == 4)
+}
