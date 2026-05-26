@@ -37,4 +37,8 @@ func main() {
 EOF
 
 echo "Created file: $folder_name/main.go"
+
+# Run README generator to update statistics
+python3 "$(dirname "$0")/generate_readme.py"
+
 echo "Done!"
