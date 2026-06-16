@@ -1,16 +1,10 @@
 # 💡 LeetCode
 
-[![Dashboard](https://img.shields.io/badge/Dashboard-coding--challenges-blue)](https://github.com/LorranSutter/coding-challenges)
+[![Dashboard](https://img.shields.io/badge/Dashboard-coding--challenges-blue?style=for-the-badge)](https://github.com/LorranSutter/coding-challenges) <!-- SUMMARY:START -->[![Solved Challenges](https://img.shields.io/badge/Solved%20Challenges-128-brightgreen?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/)<!-- SUMMARY:END -->
 
 This repository contains my solutions for [LeetCode](https://leetcode.com/) problems.
 
 LeetCode is a platform featuring coding challenges designed to improve algorithmic thinking and prepare for technical interviews.
-
-<!-- SUMMARY:START -->
-## 📊 Progress
-
-> **Overall: 128 problems solved**
-<!-- SUMMARY:END -->
 
 ## 🛠️ Setup
 

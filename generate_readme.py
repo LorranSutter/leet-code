@@ -26,11 +26,7 @@ def main():
     start_marker = "<!-- SUMMARY:START -->"
     end_marker = "<!-- SUMMARY:END -->"
     
-    summary_content = f"""{start_marker}
-## 📊 Progress
-
-> **Overall: {solved_count} problems solved**
-{end_marker}"""
+    summary_content = f"{start_marker}[![Solved Challenges](https://img.shields.io/badge/Solved%20Challenges-{solved_count}-brightgreen?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/){end_marker}"
 
     # If the markers aren't in the file, append them
     if start_marker not in content or end_marker not in content:
