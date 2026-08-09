@@ -2,8 +2,9 @@
 
 # Check if argument is provided
 if [ -z "$1" ]; then
-    echo "Usage: $0 <number>"
+    echo "Usage: $0 <number> [--ts]"
     echo "Example: $0 23"
+    echo "Example: $0 23 --ts"
     exit 1
 fi
 
@@ -25,8 +26,20 @@ fi
 mkdir "$folder_name"
 echo "Created folder: $folder_name"
 
-# Create main.go file
-cat > "$folder_name/main.go" << 'EOF'
+if [ "$2" = "--ts" ]; then
+    # Create main.ts file
+    cat > "$folder_name/main.ts" << 'EOF'
+function solve(): void {
+    console.log("Hello, LeetCode!");
+}
+
+solve();
+EOF
+
+    echo "Created file: $folder_name/main.ts"
+else
+    # Create main.go file
+    cat > "$folder_name/main.go" << 'EOF'
 package main
 
 import "fmt"
@@ -36,6 +49,7 @@ func main() {
 }
 EOF
 
-echo "Created file: $folder_name/main.go"
+    echo "Created file: $folder_name/main.go"
+fi
 
 echo "Done!"
