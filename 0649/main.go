@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func predictPartyVictory(senate string) string {
 	if len(senate) == 1 {
@@ -64,11 +64,13 @@ func predictPartyVictory(senate string) string {
 }
 
 func main() {
-	fmt.Println(predictPartyVictory("R") == "Radiant")
-	fmt.Println(predictPartyVictory("RRR") == "Radiant")
-	fmt.Println(predictPartyVictory("D") == "Dire")
-	fmt.Println(predictPartyVictory("RD") == "Radiant")
-	fmt.Println(predictPartyVictory("RDD") == "Dire")
-	fmt.Println(predictPartyVictory("DDRRR") == "Dire")
-	fmt.Println(predictPartyVictory("DRRDRDRDRDDRDRDR") == "Radiant")
+	utils.RunTests([]utils.TestCase[string]{
+		{Input: "R", Got: predictPartyVictory("R"), Expected: "Radiant"},
+		{Input: "RRR", Got: predictPartyVictory("RRR"), Expected: "Radiant"},
+		{Input: "D", Got: predictPartyVictory("D"), Expected: "Dire"},
+		{Input: "RD", Got: predictPartyVictory("RD"), Expected: "Radiant"},
+		{Input: "RDD", Got: predictPartyVictory("RDD"), Expected: "Dire"},
+		{Input: "DDRRR", Got: predictPartyVictory("DDRRR"), Expected: "Dire"},
+		{Input: "DRRDRDRDRDDRDRDR", Got: predictPartyVictory("DRRDRDRDRDDRDRDR"), Expected: "Radiant"},
+	})
 }

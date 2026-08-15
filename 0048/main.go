@@ -1,5 +1,9 @@
 package main
 
+import (
+	"leetcode/utils"
+)
+
 func rotate(matrix [][]int) {
 	// Transponse and reverse columns
 	// 1 2 3    1 4 7   0 0 1   7 4 1
@@ -24,6 +28,22 @@ func rotate(matrix [][]int) {
 }
 
 func main() {
-	rotate([][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}})
-	rotate([][]int{{5, 1, 9, 11}, {2, 4, 8, 10}, {13, 3, 6, 7}, {15, 14, 12, 16}})
+	matrix1 := [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
+	rotate(matrix1)
+
+	matrix2 := [][]int{{5, 1, 9, 11}, {2, 4, 8, 10}, {13, 3, 6, 7}, {15, 14, 12, 16}}
+	rotate(matrix2)
+
+	utils.RunTests([]utils.TestCase[[][]int]{
+		{
+			Input:    [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}},
+			Got:      matrix1,
+			Expected: [][]int{{7, 4, 1}, {8, 5, 2}, {9, 6, 3}},
+		},
+		{
+			Input:    [][]int{{5, 1, 9, 11}, {2, 4, 8, 10}, {13, 3, 6, 7}, {15, 14, 12, 16}},
+			Got:      matrix2,
+			Expected: [][]int{{15, 13, 2, 5}, {14, 3, 4, 1}, {12, 6, 8, 9}, {16, 7, 10, 11}},
+		},
+	})
 }

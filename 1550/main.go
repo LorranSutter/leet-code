@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 // 0 ms / 4.56 MB
 func threeConsecutiveOdds(arr []int) bool {
@@ -19,7 +21,9 @@ func threeConsecutiveOdds(arr []int) bool {
 }
 
 func main() {
-	fmt.Println(threeConsecutiveOdds([]int{2, 6, 4, 1}) == false)
-	fmt.Println(threeConsecutiveOdds([]int{1, 2, 34, 3, 4, 5, 7, 23, 12}) == true)
-	fmt.Println(threeConsecutiveOdds([]int{1}) == false)
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: []int{2, 6, 4, 1}, Got: threeConsecutiveOdds([]int{2, 6, 4, 1}), Expected: false},
+		{Input: []int{1, 2, 34, 3, 4, 5, 7, 23, 12}, Got: threeConsecutiveOdds([]int{1, 2, 34, 3, 4, 5, 7, 23, 12}), Expected: true},
+		{Input: []int{1}, Got: threeConsecutiveOdds([]int{1}), Expected: false},
+	})
 }

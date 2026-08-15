@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func canPlaceFlowers(flowerbed []int, n int) bool {
 	if n == 0 {
@@ -37,13 +37,15 @@ func canPlaceFlowers(flowerbed []int, n int) bool {
 }
 
 func main() {
-	fmt.Println(canPlaceFlowers([]int{1, 0, 0, 0, 1}, 1) == true)
-	fmt.Println(canPlaceFlowers([]int{1, 0, 0, 0, 1}, 2) == false)
-	fmt.Println(canPlaceFlowers([]int{0, 0, 1, 0, 0}, 1) == true)
-	fmt.Println(canPlaceFlowers([]int{0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0}, 4) == true)
-	fmt.Println(canPlaceFlowers([]int{1, 0, 0, 0, 0, 0, 1}, 2) == true)
-	fmt.Println(canPlaceFlowers([]int{0}, 1) == true)
-	fmt.Println(canPlaceFlowers([]int{0}, 0) == true)
-	fmt.Println(canPlaceFlowers([]int{1, 0, 0, 0, 0, 1}, 2) == false)
-	fmt.Println(canPlaceFlowers([]int{1, 0, 1, 0, 1, 0, 1}, 1) == false)
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: []any{[]int{1, 0, 0, 0, 1}, 1}, Got: canPlaceFlowers([]int{1, 0, 0, 0, 1}, 1), Expected: true},
+		{Input: []any{[]int{1, 0, 0, 0, 1}, 2}, Got: canPlaceFlowers([]int{1, 0, 0, 0, 1}, 2), Expected: false},
+		{Input: []any{[]int{0, 0, 1, 0, 0}, 1}, Got: canPlaceFlowers([]int{0, 0, 1, 0, 0}, 1), Expected: true},
+		{Input: []any{[]int{0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0}, 4}, Got: canPlaceFlowers([]int{0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0}, 4), Expected: true},
+		{Input: []any{[]int{1, 0, 0, 0, 0, 0, 1}, 2}, Got: canPlaceFlowers([]int{1, 0, 0, 0, 0, 0, 1}, 2), Expected: true},
+		{Input: []any{[]int{0}, 1}, Got: canPlaceFlowers([]int{0}, 1), Expected: true},
+		{Input: []any{[]int{0}, 0}, Got: canPlaceFlowers([]int{0}, 0), Expected: true},
+		{Input: []any{[]int{1, 0, 0, 0, 0, 1}, 2}, Got: canPlaceFlowers([]int{1, 0, 0, 0, 0, 1}, 2), Expected: false},
+		{Input: []any{[]int{1, 0, 1, 0, 1, 0, 1}, 1}, Got: canPlaceFlowers([]int{1, 0, 1, 0, 1, 0, 1}, 1), Expected: false},
+	})
 }

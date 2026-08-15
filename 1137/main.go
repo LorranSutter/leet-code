@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func tribonacci1(n int) int {
 	if n == 0 {
@@ -35,16 +35,16 @@ func tribonacci2(n int) int {
 }
 
 func main() {
-	fmt.Println("Solution 01")
-	fmt.Println(tribonacci1(4) == 4)
-	fmt.Println(tribonacci1(7) == 24)
-	fmt.Println(tribonacci1(25) == 1389537)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: 4, Got: tribonacci1(4), Expected: 4},
+		{Input: 7, Got: tribonacci1(7), Expected: 24},
+		{Input: 25, Got: tribonacci1(25), Expected: 1389537},
+	})
 
-	fmt.Println()
-
-	fmt.Println("Solution 02")
-	fmt.Println(tribonacci2(4) == 4)
-	fmt.Println(tribonacci2(7) == 24)
-	fmt.Println(tribonacci2(25) == 1389537)
-	fmt.Println(tribonacci2(37) == 2082876103)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: 4, Got: tribonacci2(4), Expected: 4},
+		{Input: 7, Got: tribonacci2(7), Expected: 24},
+		{Input: 25, Got: tribonacci2(25), Expected: 1389537},
+		{Input: 37, Got: tribonacci2(37), Expected: 2082876103},
+	})
 }

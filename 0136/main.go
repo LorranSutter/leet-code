@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 func singleNumber(nums []int) int {
 	num := 0
@@ -12,7 +14,9 @@ func singleNumber(nums []int) int {
 }
 
 func main() {
-	fmt.Println(singleNumber([]int{2, 2, 1}) == 1)
-	fmt.Println(singleNumber([]int{4, 1, 2, 1, 2}) == 4)
-	fmt.Println(singleNumber([]int{1}) == 1)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{2, 2, 1}, Got: singleNumber([]int{2, 2, 1}), Expected: 1},
+		{Input: []int{4, 1, 2, 1, 2}, Got: singleNumber([]int{4, 1, 2, 1, 2}), Expected: 4},
+		{Input: []int{1}, Got: singleNumber([]int{1}), Expected: 1},
+	})
 }

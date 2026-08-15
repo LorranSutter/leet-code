@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"leetcode/utils"
 	"strings"
 )
 
@@ -31,8 +31,10 @@ func canBeTypedWords(text string, brokenLetters string) int {
 }
 
 func main() {
-	fmt.Println(canBeTypedWords("hello world", "ad"))
-	fmt.Println(canBeTypedWords("leet code", "lt"))
-	fmt.Println(canBeTypedWords("leet code", "e"))
-	fmt.Println(canBeTypedWords("leet code", "ab"))
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{"hello world", "ad"}, Got: canBeTypedWords("hello world", "ad"), Expected: 1},
+		{Input: []any{"leet code", "lt"}, Got: canBeTypedWords("leet code", "lt"), Expected: 1},
+		{Input: []any{"leet code", "e"}, Got: canBeTypedWords("leet code", "e"), Expected: 0},
+		{Input: []any{"leet code", "ab"}, Got: canBeTypedWords("leet code", "ab"), Expected: 2},
+	})
 }

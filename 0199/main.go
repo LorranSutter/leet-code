@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 	"math"
 )
@@ -42,28 +41,17 @@ func rightSideView(root *utils.TreeNode) []int {
 }
 
 func main() {
-	root := utils.MakeBinaryTreeFromLevelOrder([]int{1, 2, 3, int(math.Inf(1)), 5, int(math.Inf(1)), 4}, int(math.Inf(1)))
-	result := rightSideView(root)
-	expected := []int{1, 3, 4}
-	fmt.Println(utils.DeepEqualSlices(result, expected))
+	root1 := utils.MakeBinaryTreeFromLevelOrder([]int{1, 2, 3, int(math.Inf(1)), 5, int(math.Inf(1)), 4}, int(math.Inf(1)))
+	root2 := utils.MakeBinaryTreeFromLevelOrder([]int{1, 2, 3, 4, int(math.Inf(1)), int(math.Inf(1)), int(math.Inf(1)), 5}, int(math.Inf(1)))
+	root3 := utils.MakeBinaryTreeFromLevelOrder([]int{1, int(math.Inf(1)), 3}, int(math.Inf(1)))
+	root4 := utils.MakeBinaryTreeFromLevelOrder([]int{}, int(math.Inf(1)))
+	root5 := utils.MakeBinaryTreeFromLevelOrder([]int{1, 2, 3, int(math.Inf(1)), 5, 6, int(math.Inf(1)), 4}, int(math.Inf(1)))
 
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{1, 2, 3, 4, int(math.Inf(1)), int(math.Inf(1)), int(math.Inf(1)), 5}, int(math.Inf(1)))
-	result = rightSideView(root)
-	expected = []int{1, 3, 4, 5}
-	fmt.Println(utils.DeepEqualSlices(result, expected))
-
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{1, int(math.Inf(1)), 3}, int(math.Inf(1)))
-	result = rightSideView(root)
-	expected = []int{1, 3}
-	fmt.Println(utils.DeepEqualSlices(result, expected))
-
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{}, int(math.Inf(1)))
-	result = rightSideView(root)
-	expected = []int{}
-	fmt.Println(utils.DeepEqualSlices(result, expected))
-
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{1, 2, 3, int(math.Inf(1)), 5, 6, int(math.Inf(1)), 4}, int(math.Inf(1)))
-	result = rightSideView(root)
-	expected = []int{1, 3, 6, 4}
-	fmt.Println(utils.DeepEqualSlices(result, expected))
+	utils.RunTests([]utils.TestCase[[]int]{
+		{Input: root1, Got: rightSideView(root1), Expected: []int{1, 3, 4}},
+		{Input: root2, Got: rightSideView(root2), Expected: []int{1, 3, 4, 5}},
+		{Input: root3, Got: rightSideView(root3), Expected: []int{1, 3}},
+		{Input: root4, Got: rightSideView(root4), Expected: []int{}},
+		{Input: root5, Got: rightSideView(root5), Expected: []int{1, 3, 6, 4}},
+	})
 }

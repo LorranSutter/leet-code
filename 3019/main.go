@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"leetcode/utils"
 	"unicode"
 )
 
@@ -34,13 +34,13 @@ func countKeyChanges2(s string) int {
 }
 
 func main() {
-	fmt.Println("Solution 1")
-	fmt.Println(countKeyChanges1("aAbBcC") == 2)
-	fmt.Println(countKeyChanges1("AaAaAaaA") == 0)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: "aAbBcC", Got: countKeyChanges1("aAbBcC"), Expected: 2},
+		{Input: "AaAaAaaA", Got: countKeyChanges1("AaAaAaaA"), Expected: 0},
+	})
 
-	fmt.Println()
-
-	fmt.Println("Solution 2")
-	fmt.Println(countKeyChanges2("aAbBcC") == 2)
-	fmt.Println(countKeyChanges2("AaAaAaaA") == 0)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: "aAbBcC", Got: countKeyChanges2("aAbBcC"), Expected: 2},
+		{Input: "AaAaAaaA", Got: countKeyChanges2("AaAaAaaA"), Expected: 0},
+	})
 }

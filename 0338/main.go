@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 	"math"
 )
@@ -85,25 +84,24 @@ func countBits3(n int) []int {
 }
 
 func main() {
-	fmt.Println("Solution 01")
-	fmt.Println(utils.DeepEqualSlices(countBits1(2), []int{0, 1, 1}))
-	fmt.Println(utils.DeepEqualSlices(countBits1(5), []int{0, 1, 1, 2, 1, 2}))
-	fmt.Println(utils.DeepEqualSlices(countBits1(10), []int{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2}))
-	fmt.Println(utils.DeepEqualSlices(countBits1(17), []int{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2}))
+	utils.RunTests([]utils.TestCase[[]int]{
+		{Input: 2, Got: countBits1(2), Expected: []int{0, 1, 1}},
+		{Input: 5, Got: countBits1(5), Expected: []int{0, 1, 1, 2, 1, 2}},
+		{Input: 10, Got: countBits1(10), Expected: []int{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2}},
+		{Input: 17, Got: countBits1(17), Expected: []int{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2}},
+	})
 
-	fmt.Println()
+	utils.RunTests([]utils.TestCase[[]int]{
+		{Input: 2, Got: countBits2(2), Expected: []int{0, 1, 1}},
+		{Input: 5, Got: countBits2(5), Expected: []int{0, 1, 1, 2, 1, 2}},
+		{Input: 10, Got: countBits2(10), Expected: []int{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2}},
+		{Input: 17, Got: countBits2(17), Expected: []int{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2}},
+	})
 
-	fmt.Println("Solution 02")
-	fmt.Println(utils.DeepEqualSlices(countBits2(2), []int{0, 1, 1}))
-	fmt.Println(utils.DeepEqualSlices(countBits2(5), []int{0, 1, 1, 2, 1, 2}))
-	fmt.Println(utils.DeepEqualSlices(countBits2(10), []int{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2}))
-	fmt.Println(utils.DeepEqualSlices(countBits2(17), []int{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2}))
-
-	fmt.Println()
-
-	fmt.Println("Solution 03")
-	fmt.Println(utils.DeepEqualSlices(countBits3(2), []int{0, 1, 1}))
-	fmt.Println(utils.DeepEqualSlices(countBits3(5), []int{0, 1, 1, 2, 1, 2}))
-	fmt.Println(utils.DeepEqualSlices(countBits3(10), []int{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2}))
-	fmt.Println(utils.DeepEqualSlices(countBits3(17), []int{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2}))
+	utils.RunTests([]utils.TestCase[[]int]{
+		{Input: 2, Got: countBits3(2), Expected: []int{0, 1, 1}},
+		{Input: 5, Got: countBits3(5), Expected: []int{0, 1, 1, 2, 1, 2}},
+		{Input: 10, Got: countBits3(10), Expected: []int{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2}},
+		{Input: 17, Got: countBits3(17), Expected: []int{0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2}},
+	})
 }

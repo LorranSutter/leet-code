@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 // The idea is to keep track of the number of ones
 // Every time we encounter a zero after a one, we add the count of ones to the maximum number of operations
@@ -23,7 +23,9 @@ func maxOperations(s string) int {
 }
 
 func main() {
-	fmt.Println(maxOperations("1001101") == 4)
-	fmt.Println(maxOperations("00111") == 0)
-	fmt.Println(maxOperations("10011010") == 8)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: "1001101", Got: maxOperations("1001101"), Expected: 4},
+		{Input: "00111", Got: maxOperations("00111"), Expected: 0},
+		{Input: "10011010", Got: maxOperations("10011010"), Expected: 8},
+	})
 }

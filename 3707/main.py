@@ -1,3 +1,11 @@
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from utils.utils import run_tests
+
+
 class Solution:
     def scoreBalance(self, s: str) -> bool:
         s = [ord(letter) - 96 for letter in s]
@@ -16,7 +24,8 @@ class Solution:
                 sum_init += s[i]
 
 
-s = Solution()
-print(s.scoreBalance("adcb") == True)
-print(s.scoreBalance("bace") == True)
-print(s.scoreBalance("baece") == True)
+run_tests(Solution().scoreBalance, [
+    {"input": ["adcb"], "expected": True},
+    {"input": ["bace"], "expected": False},
+    {"input": ["baece"], "expected": True},
+])

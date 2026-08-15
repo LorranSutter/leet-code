@@ -1,3 +1,5 @@
+import { runTests } from "../utils/utils.ts"
+
 // Sieve of Eratosthenes
 function countPrimes(n: number): number {
     const primes: boolean[] = new Array(n).fill(true)
@@ -17,7 +19,9 @@ function countPrimes(n: number): number {
     return primes.reduce((acc, curr) => acc + (curr ? 1 : 0), 0)
 }
 
-console.log(countPrimes(10) === 4);
-console.log(countPrimes(0) === 0);
-console.log(countPrimes(1) === 0);
-console.log(countPrimes(2) === 0);
+runTests(countPrimes, [
+    { input: [10], expected: 4 },
+    { input: [0], expected: 0 },
+    { input: [1], expected: 0 },
+    { input: [2], expected: 0 },
+])

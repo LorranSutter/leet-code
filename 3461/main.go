@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 // 0 ms / 4.3 MB
 func hasSameDigits(s string) bool {
@@ -24,8 +24,10 @@ func hasSameDigits(s string) bool {
 }
 
 func main() {
-	fmt.Println(hasSameDigits("3902") == true)
-	fmt.Println(hasSameDigits("34789") == false)
-	fmt.Println(hasSameDigits("4867716181911413979960155821878") == true)
-	fmt.Println(hasSameDigits("472371665226339635424494604455723348326857778972516313101962164") == true)
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: "3902", Got: hasSameDigits("3902"), Expected: true},
+		{Input: "34789", Got: hasSameDigits("34789"), Expected: false},
+		{Input: "4867716181911413979960155821878", Got: hasSameDigits("4867716181911413979960155821878"), Expected: true},
+		{Input: "472371665226339635424494604455723348326857778972516313101962164", Got: hasSameDigits("472371665226339635424494604455723348326857778972516313101962164"), Expected: true},
+	})
 }

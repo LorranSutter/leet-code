@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 // The idea here is to use a stack to keep track of the opening parentheses.
 // If we encounter a closing parenthesis, we check if the last opening parenthesis is the corresponding type.
@@ -30,12 +32,14 @@ func isValid(s string) bool {
 }
 
 func main() {
-	fmt.Println(isValid("[") == false)
-	fmt.Println(isValid("()") == true)
-	fmt.Println(isValid("()[]{}") == true)
-	fmt.Println(isValid("(]") == false)
-	fmt.Println(isValid("([])") == true)
-	fmt.Println(isValid("([)])") == false)
-	fmt.Println(isValid("([{}])") == true)
-	fmt.Println(isValid("[({})]") == true)
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: "[", Got: isValid("["), Expected: false},
+		{Input: "()", Got: isValid("()"), Expected: true},
+		{Input: "()[]{}", Got: isValid("()[]{}"), Expected: true},
+		{Input: "(]", Got: isValid("(]"), Expected: false},
+		{Input: "([])", Got: isValid("([])"), Expected: true},
+		{Input: "([)])", Got: isValid("([)])"), Expected: false},
+		{Input: "([{}])", Got: isValid("([{}])"), Expected: true},
+		{Input: "[({})]", Got: isValid("[({})]"), Expected: true},
+	})
 }

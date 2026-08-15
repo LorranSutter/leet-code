@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func AbsInt(x int) int {
 	if x < 0 {
@@ -24,7 +24,9 @@ func findClosest(x int, y int, z int) int {
 }
 
 func main() {
-	fmt.Println(findClosest(2, 7, 4))
-	fmt.Println(findClosest(2, 5, 6))
-	fmt.Println(findClosest(1, 5, 3))
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{2, 7, 4}, Got: findClosest(2, 7, 4), Expected: 1},
+		{Input: []int{2, 5, 6}, Got: findClosest(2, 5, 6), Expected: 2},
+		{Input: []int{1, 5, 3}, Got: findClosest(1, 5, 3), Expected: 0},
+	})
 }

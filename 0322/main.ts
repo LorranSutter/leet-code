@@ -1,3 +1,5 @@
+import { runTests } from "../utils/utils.ts"
+
 function coinChange(coins: number[], amount: number): number {
     const dp: number[] = new Array(amount + 1).fill(Infinity);
     dp[0] = 0;
@@ -13,8 +15,10 @@ function coinChange(coins: number[], amount: number): number {
     return dp[amount] === Infinity ? -1 : dp[amount];
 }
 
-console.log(coinChange([1, 2, 5, 10], 18))
-console.log(coinChange([186, 419, 83, 408], 6249))
-console.log(coinChange([1, 2, 5], 11));
-console.log(coinChange([2], 3));
-console.log(coinChange([1], 0));
+runTests(coinChange, [
+    { input: [[1, 2, 5, 10], 18], expected: 4 },
+    { input: [[186, 419, 83, 408], 6249], expected: 20 },
+    { input: [[1, 2, 5], 11], expected: 3 },
+    { input: [[2], 3], expected: -1 },
+    { input: [[1], 0], expected: 0 },
+])

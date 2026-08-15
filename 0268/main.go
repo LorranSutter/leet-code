@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 // 0 ms / 8.8 MB
 func missingNumber(nums []int) int {
@@ -29,8 +29,10 @@ func missingNumber(nums []int) int {
 }
 
 func main() {
-	fmt.Println(missingNumber([]int{3, 0, 1}) == 2)
-	fmt.Println(missingNumber([]int{0, 1}) == 2)
-	fmt.Println(missingNumber([]int{9, 6, 4, 2, 3, 5, 7, 0, 1}) == 8)
-	fmt.Println(missingNumber([]int{2}) == 0)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{3, 0, 1}, Got: missingNumber([]int{3, 0, 1}), Expected: 2},
+		{Input: []int{0, 1}, Got: missingNumber([]int{0, 1}), Expected: 2},
+		{Input: []int{9, 6, 4, 2, 3, 5, 7, 0, 1}, Got: missingNumber([]int{9, 6, 4, 2, 3, 5, 7, 0, 1}), Expected: 8},
+		{Input: []int{2}, Got: missingNumber([]int{2}), Expected: 0},
+	})
 }

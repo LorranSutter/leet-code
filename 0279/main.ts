@@ -1,3 +1,5 @@
+import { runTests } from "../utils/utils.ts"
+
 /**
  * - The key insight is that this is a coin-change problem in disguise: the "coins" are perfect squares
  *   (1, 4, 9, 16, ...) up to n, and we want the fewest of them that add up to n.
@@ -42,5 +44,7 @@ function numSquares(n: number): number {
     return dp[n]
 }
 
-console.log(numSquares(12) === 3);
-console.log(numSquares(13) === 2);
+runTests(numSquares, [
+    { input: [12], expected: 3 },
+    { input: [13], expected: 2 },
+])

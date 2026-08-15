@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 	"math"
 )
@@ -54,21 +53,19 @@ func pathSumHelper(node *utils.TreeNode, targetSum, currentSum int, count *int) 
 }
 
 func main() {
-	root := utils.MakeBinaryTreeFromLevelOrder([]int{10, 5, -3, 3, 2, int(math.Inf(1)), 11, 3, -2, int(math.Inf(1)), 1}, int(math.Inf(1)))
-	fmt.Println(pathSum(root, 8) == 3)
+	root1 := utils.MakeBinaryTreeFromLevelOrder([]int{10, 5, -3, 3, 2, int(math.Inf(1)), 11, 3, -2, int(math.Inf(1)), 1}, int(math.Inf(1)))
+	root2 := utils.MakeBinaryTreeFromLevelOrder([]int{5, 4, 8, 11, int(math.Inf(1)), 13, 4, 7, 2, int(math.Inf(1)), int(math.Inf(1)), 5, 1}, int(math.Inf(1)))
+	root3 := utils.MakeBinaryTreeFromLevelOrder([]int{0, 1, 1}, int(math.Inf(1)))
+	root4 := utils.MakeBinaryTreeFromLevelOrder([]int{10, 5, -3, 3, 2, int(math.Inf(1)), 11, 0, 1, int(math.Inf(1)), 1, int(math.Inf(1)), 0, 0, int(math.Inf(1)), 0, 0, 0, int(math.Inf(1)), 1, int(math.Inf(1)), 0, int(math.Inf(1)), 0}, int(math.Inf(1)))
+	root5 := utils.MakeBinaryTreeFromLevelOrder([]int{1}, int(math.Inf(1)))
+	root6 := utils.MakeBinaryTreeFromLevelOrder([]int{-2, int(math.Inf(1)), -3}, int(math.Inf(1)))
 
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{5, 4, 8, 11, int(math.Inf(1)), 13, 4, 7, 2, int(math.Inf(1)), int(math.Inf(1)), 5, 1}, int(math.Inf(1)))
-	fmt.Println(pathSum(root, 22) == 3)
-
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{0, 1, 1}, int(math.Inf(1)))
-	fmt.Println(pathSum(root, 1) == 4)
-
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{10, 5, -3, 3, 2, int(math.Inf(1)), 11, 0, 1, int(math.Inf(1)), 1, int(math.Inf(1)), 0, 0, int(math.Inf(1)), 0, 0, 0, int(math.Inf(1)), 1, int(math.Inf(1)), 0, int(math.Inf(1)), 0}, int(math.Inf(1)))
-	fmt.Println(pathSum(root, 8) == 8)
-
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{1}, int(math.Inf(1)))
-	fmt.Println(pathSum(root, 0) == 0)
-
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{-2, int(math.Inf(1)), -3}, int(math.Inf(1)))
-	fmt.Println(pathSum(root, -3) == 1)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: root1, Got: pathSum(root1, 8), Expected: 3},
+		{Input: root2, Got: pathSum(root2, 22), Expected: 3},
+		{Input: root3, Got: pathSum(root3, 1), Expected: 4},
+		{Input: root4, Got: pathSum(root4, 8), Expected: 8},
+		{Input: root5, Got: pathSum(root5, 0), Expected: 0},
+		{Input: root6, Got: pathSum(root6, -3), Expected: 1},
+	})
 }

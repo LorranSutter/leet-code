@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 func largestAltitude(gain []int) int {
 	highest, current := 0, 0
@@ -16,6 +18,8 @@ func largestAltitude(gain []int) int {
 }
 
 func main() {
-	fmt.Println(largestAltitude([]int{-5, 1, 5, 0, -7}) == 1)
-	fmt.Println(largestAltitude([]int{-4, -3, -2, -1, 4, 3, 2}) == 0)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{-5, 1, 5, 0, -7}, Got: largestAltitude([]int{-5, 1, 5, 0, -7}), Expected: 1},
+		{Input: []int{-4, -3, -2, -1, 4, 3, 2}, Got: largestAltitude([]int{-4, -3, -2, -1, 4, 3, 2}), Expected: 0},
+	})
 }

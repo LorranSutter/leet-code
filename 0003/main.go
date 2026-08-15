@@ -1,8 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"strings"
+
+	"leetcode/utils"
 )
 
 func lengthOfLongestSubstring(s string) int {
@@ -32,12 +33,14 @@ func lengthOfLongestSubstring(s string) int {
 }
 
 func main() {
-	fmt.Println(lengthOfLongestSubstring("abcabcbb") == 3)
-	fmt.Println(lengthOfLongestSubstring("abcdabcbb") == 4)
-	fmt.Println(lengthOfLongestSubstring("abcabcdbabc") == 4)
-	fmt.Println(lengthOfLongestSubstring("bbbbb") == 1)
-	fmt.Println(lengthOfLongestSubstring("pwwkew") == 3)
-	fmt.Println(lengthOfLongestSubstring("dvdf") == 3)
-	fmt.Println(lengthOfLongestSubstring("") == 0)
-	fmt.Println(lengthOfLongestSubstring("a") == 1)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: "abcabcbb", Got: lengthOfLongestSubstring("abcabcbb"), Expected: 3},
+		{Input: "abcdabcbb", Got: lengthOfLongestSubstring("abcdabcbb"), Expected: 4},
+		{Input: "abcabcdbabc", Got: lengthOfLongestSubstring("abcabcdbabc"), Expected: 4},
+		{Input: "bbbbb", Got: lengthOfLongestSubstring("bbbbb"), Expected: 1},
+		{Input: "pwwkew", Got: lengthOfLongestSubstring("pwwkew"), Expected: 3},
+		{Input: "dvdf", Got: lengthOfLongestSubstring("dvdf"), Expected: 3},
+		{Input: "", Got: lengthOfLongestSubstring(""), Expected: 0},
+		{Input: "a", Got: lengthOfLongestSubstring("a"), Expected: 1},
+	})
 }

@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 // 0 ms / 4.83 MB
 func searchInsert1(nums []int, target int) int {
@@ -36,17 +38,17 @@ func searchInsert2(nums []int, target int) int {
 }
 
 func main() {
-	fmt.Println("Solution 1")
-	fmt.Println(searchInsert1([]int{1, 3, 5, 6}, 5) == 2)
-	fmt.Println(searchInsert1([]int{1, 3, 5, 6}, 2) == 1)
-	fmt.Println(searchInsert1([]int{1, 3, 5, 6}, 7) == 4)
-	fmt.Println(searchInsert1([]int{1, 3, 5, 6}, 0) == 0)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{[]int{1, 3, 5, 6}, 5}, Got: searchInsert1([]int{1, 3, 5, 6}, 5), Expected: 2},
+		{Input: []any{[]int{1, 3, 5, 6}, 2}, Got: searchInsert1([]int{1, 3, 5, 6}, 2), Expected: 1},
+		{Input: []any{[]int{1, 3, 5, 6}, 7}, Got: searchInsert1([]int{1, 3, 5, 6}, 7), Expected: 4},
+		{Input: []any{[]int{1, 3, 5, 6}, 0}, Got: searchInsert1([]int{1, 3, 5, 6}, 0), Expected: 0},
+	})
 
-	fmt.Println()
-
-	fmt.Println("Solution 2")
-	fmt.Println(searchInsert2([]int{1, 3, 5, 6}, 5) == 2)
-	fmt.Println(searchInsert2([]int{1, 3, 5, 6}, 2) == 1)
-	fmt.Println(searchInsert2([]int{1, 3, 5, 6}, 7) == 4)
-	fmt.Println(searchInsert2([]int{1, 3, 5, 6}, 0) == 0)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{[]int{1, 3, 5, 6}, 5}, Got: searchInsert2([]int{1, 3, 5, 6}, 5), Expected: 2},
+		{Input: []any{[]int{1, 3, 5, 6}, 2}, Got: searchInsert2([]int{1, 3, 5, 6}, 2), Expected: 1},
+		{Input: []any{[]int{1, 3, 5, 6}, 7}, Got: searchInsert2([]int{1, 3, 5, 6}, 7), Expected: 4},
+		{Input: []any{[]int{1, 3, 5, 6}, 0}, Got: searchInsert2([]int{1, 3, 5, 6}, 0), Expected: 0},
+	})
 }

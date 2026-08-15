@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 func totalMoney(n int) int {
 	total := 0
@@ -24,9 +26,11 @@ func totalMoney(n int) int {
 }
 
 func main() {
-	fmt.Println(totalMoney(4) == 10)
-	fmt.Println(totalMoney(10) == 37)
-	fmt.Println(totalMoney(20) == 96)
-	fmt.Println(totalMoney(21) == 105)
-	fmt.Println(totalMoney(22) == 109)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: 4, Got: totalMoney(4), Expected: 10},
+		{Input: 10, Got: totalMoney(10), Expected: 37},
+		{Input: 20, Got: totalMoney(20), Expected: 96},
+		{Input: 21, Got: totalMoney(21), Expected: 105},
+		{Input: 22, Got: totalMoney(22), Expected: 109},
+	})
 }

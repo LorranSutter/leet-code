@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 func plusOne(digits []int) []int {
 	for i := len(digits) - 1; i >= 0; i-- {
@@ -21,8 +23,10 @@ func plusOne(digits []int) []int {
 }
 
 func main() {
-	fmt.Println(plusOne([]int{1, 2, 3}))
-	fmt.Println(plusOne([]int{4, 3, 2, 1}))
-	fmt.Println(plusOne([]int{9}))
-	fmt.Println(plusOne([]int{8, 9, 9, 9}))
+	utils.RunTests([]utils.TestCase[[]int]{
+		{Input: []int{1, 2, 3}, Got: plusOne([]int{1, 2, 3}), Expected: []int{1, 2, 4}},
+		{Input: []int{4, 3, 2, 1}, Got: plusOne([]int{4, 3, 2, 1}), Expected: []int{4, 3, 2, 2}},
+		{Input: []int{9}, Got: plusOne([]int{9}), Expected: []int{1, 0}},
+		{Input: []int{8, 9, 9, 9}, Got: plusOne([]int{8, 9, 9, 9}), Expected: []int{9, 0, 0, 0}},
+	})
 }

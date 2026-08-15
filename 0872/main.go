@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 	"math"
 )
@@ -40,9 +39,12 @@ func getLeafNodes(node *utils.TreeNode, leafs *[]int) {
 func main() {
 	root1 := utils.MakeBinaryTreeFromLevelOrder([]int{3, 5, 1, 6, 2, 9, 8, int(math.Inf(1)), int(math.Inf(1)), 7, 4}, int(math.Inf(1)))
 	root2 := utils.MakeBinaryTreeFromLevelOrder([]int{3, 5, 1, 6, 7, 4, 2, int(math.Inf(1)), int(math.Inf(1)), int(math.Inf(1)), int(math.Inf(1)), int(math.Inf(1)), int(math.Inf(1)), 9, 8}, int(math.Inf(1)))
-	fmt.Println(leafSimilar(root1, root2) == true)
 
-	root1 = utils.MakeBinaryTreeFromLevelOrder([]int{1, 2, 3}, int(math.Inf(1)))
-	root2 = utils.MakeBinaryTreeFromLevelOrder([]int{1, 3, 2}, int(math.Inf(1)))
-	fmt.Println(leafSimilar(root1, root2) == false)
+	root3 := utils.MakeBinaryTreeFromLevelOrder([]int{1, 2, 3}, int(math.Inf(1)))
+	root4 := utils.MakeBinaryTreeFromLevelOrder([]int{1, 3, 2}, int(math.Inf(1)))
+
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: []int{3, 5, 1, 6, 2, 9, 8, 7, 4}, Got: leafSimilar(root1, root2), Expected: true},
+		{Input: []int{1, 2, 3}, Got: leafSimilar(root3, root4), Expected: false},
+	})
 }

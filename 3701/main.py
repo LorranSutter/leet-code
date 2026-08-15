@@ -1,4 +1,10 @@
+import sys
+from pathlib import Path
 from typing import List
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from utils.utils import run_tests
 
 
 class Solution:
@@ -21,3 +27,15 @@ class Solution:
         for i, num in enumerate(nums):
             res += (-1) ** i * num
         return res
+
+
+test_cases = [
+    {"input": [[]], "expected": 0},
+    {"input": [[5]], "expected": 5},
+    {"input": [[1, 2, 3, 4]], "expected": -2},
+    {"input": [[3, 7, 1]], "expected": -3},
+]
+
+run_tests(Solution().alternatingSum1, test_cases)
+run_tests(Solution().alternatingSum2, test_cases)
+run_tests(Solution().alternatingSum3, test_cases)

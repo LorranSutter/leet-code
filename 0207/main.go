@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func canFinish(numCourses int, prerequisites [][]int) bool {
 	adjList := make(map[int][]int)
@@ -45,9 +45,11 @@ func hasCycle(course int, adjList map[int][]int, visited map[int]bool, finished 
 }
 
 func main() {
-	fmt.Println(canFinish(2, [][]int{{1, 0}}) == true)
-	fmt.Println(canFinish(2, [][]int{{1, 0}, {0, 1}}) == false)
-	fmt.Println(canFinish(5, [][]int{{1, 4}, {2, 4}, {3, 1}, {3, 2}}) == true)
-	fmt.Println(canFinish(6, [][]int{{1, 0}, {1, 2}, {3, 1}, {2, 3}, {2, 4}, {4, 5}, {2, 5}}) == false)
-	fmt.Println(canFinish(6, [][]int{{1, 0}, {1, 2}, {3, 1}, {3, 2}, {2, 4}, {4, 5}, {2, 5}}) == true)
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: [][]int{{1, 0}}, Got: canFinish(2, [][]int{{1, 0}}), Expected: true},
+		{Input: [][]int{{1, 0}, {0, 1}}, Got: canFinish(2, [][]int{{1, 0}, {0, 1}}), Expected: false},
+		{Input: [][]int{{1, 4}, {2, 4}, {3, 1}, {3, 2}}, Got: canFinish(5, [][]int{{1, 4}, {2, 4}, {3, 1}, {3, 2}}), Expected: true},
+		{Input: [][]int{{1, 0}, {1, 2}, {3, 1}, {2, 3}, {2, 4}, {4, 5}, {2, 5}}, Got: canFinish(6, [][]int{{1, 0}, {1, 2}, {3, 1}, {2, 3}, {2, 4}, {4, 5}, {2, 5}}), Expected: false},
+		{Input: [][]int{{1, 0}, {1, 2}, {3, 1}, {3, 2}, {2, 4}, {4, 5}, {2, 5}}, Got: canFinish(6, [][]int{{1, 0}, {1, 2}, {3, 1}, {3, 2}, {2, 4}, {4, 5}, {2, 5}}), Expected: true},
+	})
 }

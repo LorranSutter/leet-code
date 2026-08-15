@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"leetcode/utils"
 	"math"
 )
 
@@ -59,17 +59,17 @@ func maxSubarraySum2(nums []int, k int) int64 {
 }
 
 func main() {
-	fmt.Println("Solution 01")
-	fmt.Println(maxSubarraySum1([]int{1, 2}, 1) == 3)
-	fmt.Println(maxSubarraySum1([]int{-1, -2, -3, -4, -5}, 4) == -10)
-	fmt.Println(maxSubarraySum1([]int{-5, 1, 2, -3, 4}, 2) == 4)
-	fmt.Println(maxSubarraySum1([]int{-10, -1}, 1) == -1)
+	utils.RunTests([]utils.TestCase[int64]{
+		{Input: []any{[]int{1, 2}, 1}, Got: maxSubarraySum1([]int{1, 2}, 1), Expected: 3},
+		{Input: []any{[]int{-1, -2, -3, -4, -5}, 4}, Got: maxSubarraySum1([]int{-1, -2, -3, -4, -5}, 4), Expected: -10},
+		{Input: []any{[]int{-5, 1, 2, -3, 4}, 2}, Got: maxSubarraySum1([]int{-5, 1, 2, -3, 4}, 2), Expected: 4},
+		{Input: []any{[]int{-10, -1}, 1}, Got: maxSubarraySum1([]int{-10, -1}, 1), Expected: -1},
+	})
 
-	fmt.Println()
-
-	fmt.Println("Solution 02")
-	fmt.Println(maxSubarraySum2([]int{1, 2}, 1) == 3)
-	fmt.Println(maxSubarraySum2([]int{-1, -2, -3, -4, -5}, 4) == -10)
-	fmt.Println(maxSubarraySum2([]int{-5, 1, 2, -3, 4}, 2) == 4)
-	fmt.Println(maxSubarraySum2([]int{-10, -1}, 1) == -1)
+	utils.RunTests([]utils.TestCase[int64]{
+		{Input: []any{[]int{1, 2}, 1}, Got: maxSubarraySum2([]int{1, 2}, 1), Expected: 3},
+		{Input: []any{[]int{-1, -2, -3, -4, -5}, 4}, Got: maxSubarraySum2([]int{-1, -2, -3, -4, -5}, 4), Expected: -10},
+		{Input: []any{[]int{-5, 1, 2, -3, 4}, 2}, Got: maxSubarraySum2([]int{-5, 1, 2, -3, 4}, 2), Expected: 4},
+		{Input: []any{[]int{-10, -1}, 1}, Got: maxSubarraySum2([]int{-10, -1}, 1), Expected: -1},
+	})
 }

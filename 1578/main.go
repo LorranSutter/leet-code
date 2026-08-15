@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 func minCost(colors string, neededTime []int) int {
 	cost := 0
@@ -27,9 +29,11 @@ func minCost(colors string, neededTime []int) int {
 }
 
 func main() {
-	fmt.Println(minCost("abaac", []int{1, 2, 3, 4, 5}) == 3)
-	fmt.Println(minCost("abc", []int{1, 2, 3}) == 0)
-	fmt.Println(minCost("aabaa", []int{1, 2, 3, 4, 1}) == 2)
-	fmt.Println(minCost("baaaabaa", []int{1, 1, 5, 1, 2, 6, 7, 1}) == 5)
-	fmt.Println(minCost("bbbaaa", []int{4, 9, 3, 8, 8, 9}) == 23)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{"abaac", []int{1, 2, 3, 4, 5}}, Got: minCost("abaac", []int{1, 2, 3, 4, 5}), Expected: 3},
+		{Input: []any{"abc", []int{1, 2, 3}}, Got: minCost("abc", []int{1, 2, 3}), Expected: 0},
+		{Input: []any{"aabaa", []int{1, 2, 3, 4, 1}}, Got: minCost("aabaa", []int{1, 2, 3, 4, 1}), Expected: 2},
+		{Input: []any{"baaaabaa", []int{1, 1, 5, 1, 2, 6, 7, 1}}, Got: minCost("baaaabaa", []int{1, 1, 5, 1, 2, 6, 7, 1}), Expected: 5},
+		{Input: []any{"bbbaaa", []int{4, 9, 3, 8, 8, 9}}, Got: minCost("bbbaaa", []int{4, 9, 3, 8, 8, 9}), Expected: 23},
+	})
 }

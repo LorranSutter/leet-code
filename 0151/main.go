@@ -1,8 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"strings"
+
+	"leetcode/utils"
 )
 
 func reverseWords(s string) string {
@@ -28,10 +29,12 @@ func reverseWords(s string) string {
 }
 
 func main() {
-	fmt.Println(reverseWords("the sky is blue") == "blue is sky the")
-	fmt.Println(reverseWords("  hello world  ") == "world hello")
-	fmt.Println(reverseWords("a good   example") == "example good a")
-	fmt.Println(reverseWords("a") == "a")
-	fmt.Println(reverseWords("a  ") == "a")
-	fmt.Println(reverseWords("  a") == "a")
+	utils.RunTests([]utils.TestCase[string]{
+		{Input: "the sky is blue", Got: reverseWords("the sky is blue"), Expected: "blue is sky the"},
+		{Input: "  hello world  ", Got: reverseWords("  hello world  "), Expected: "world hello"},
+		{Input: "a good   example", Got: reverseWords("a good   example"), Expected: "example good a"},
+		{Input: "a", Got: reverseWords("a"), Expected: "a"},
+		{Input: "a  ", Got: reverseWords("a  "), Expected: "a"},
+		{Input: "  a", Got: reverseWords("  a"), Expected: "a"},
+	})
 }

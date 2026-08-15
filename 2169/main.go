@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 func countOperations(num1 int, num2 int) int {
 	count := 0
@@ -17,7 +19,9 @@ func countOperations(num1 int, num2 int) int {
 }
 
 func main() {
-	fmt.Println(countOperations(2, 3) == 3)
-	fmt.Println(countOperations(10, 10) == 1)
-	fmt.Println(countOperations(5, 2) == 4)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{2, 3}, Got: countOperations(2, 3), Expected: 3},
+		{Input: []any{10, 10}, Got: countOperations(10, 10), Expected: 1},
+		{Input: []any{5, 2}, Got: countOperations(5, 2), Expected: 4},
+	})
 }

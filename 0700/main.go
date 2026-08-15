@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 )
 
@@ -31,9 +30,12 @@ func searchBST(root *utils.TreeNode, val int) *utils.TreeNode {
 func main() {
 	root := utils.MakeBinaryTree([]int{4, 2, 7, 1, 3})
 	result := searchBST(root, 2)
-	fmt.Println(result.Val == 2)
 
-	root = utils.MakeBinaryTree([]int{4, 2, 7, 1, 3})
-	result = searchBST(root, 5)
-	fmt.Println(result == nil)
+	root2 := utils.MakeBinaryTree([]int{4, 2, 7, 1, 3})
+	result2 := searchBST(root2, 5)
+
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: 2, Got: result.Val == 2, Expected: true},
+		{Input: 5, Got: result2 == nil, Expected: true},
+	})
 }

@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 const LARGE_SIZE int = 3
 
@@ -23,8 +23,10 @@ func largeGroupPositions(s string) [][]int {
 }
 
 func main() {
-	fmt.Println(largeGroupPositions("aaa"))
-	fmt.Println(largeGroupPositions("abbxxxxzzy"))
-	fmt.Println(largeGroupPositions("abcdddeeeeaabbbcd"))
-	fmt.Println(largeGroupPositions("bababbaaab"))
+	utils.RunTests([]utils.TestCase[[][]int]{
+		{Input: "aaa", Got: largeGroupPositions("aaa"), Expected: [][]int{{0, 2}}},
+		{Input: "abbxxxxzzy", Got: largeGroupPositions("abbxxxxzzy"), Expected: [][]int{{3, 6}}},
+		{Input: "abcdddeeeeaabbbcd", Got: largeGroupPositions("abcdddeeeeaabbbcd"), Expected: [][]int{{3, 5}, {6, 9}, {12, 14}}},
+		{Input: "bababbaaab", Got: largeGroupPositions("bababbaaab"), Expected: [][]int{{6, 8}}},
+	})
 }

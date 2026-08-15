@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"leetcode/utils"
 )
 
 func areaOfMaxDiagonal(dimensions [][]int) int {
@@ -28,5 +28,7 @@ func areaOfMaxDiagonal(dimensions [][]int) int {
 }
 
 func main() {
-	fmt.Println(areaOfMaxDiagonal([][]int{{4, 3}, {3, 4}}))
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: [][]int{{4, 3}, {3, 4}}, Got: areaOfMaxDiagonal([][]int{{4, 3}, {3, 4}}), Expected: 12},
+	})
 }

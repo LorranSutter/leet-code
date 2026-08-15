@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 )
 
@@ -42,11 +41,29 @@ func findDifference(nums1 []int, nums2 []int) [][]int {
 }
 
 func main() {
-	diff := findDifference([]int{1, 2, 3}, []int{2, 4, 6})
-	fmt.Println(utils.EqualSlices(diff[0], []int{1, 3}))
-	fmt.Println(utils.EqualSlices(diff[1], []int{4, 6}))
+	diff1 := findDifference([]int{1, 2, 3}, []int{2, 4, 6})
+	diff2 := findDifference([]int{1, 2, 3, 3}, []int{1, 1, 2, 2})
 
-	diff = findDifference([]int{1, 2, 3, 3}, []int{1, 1, 2, 2})
-	fmt.Println(utils.EqualSlices(diff[0], []int{3}))
-	fmt.Println(utils.EqualSlices(diff[1], []int{}))
+	utils.RunTests([]utils.TestCase[bool]{
+		{
+			Input:    []any{[]int{1, 2, 3}, []int{2, 4, 6}},
+			Got:      utils.EqualSlices(diff1[0], []int{1, 3}),
+			Expected: true,
+		},
+		{
+			Input:    []any{[]int{1, 2, 3}, []int{2, 4, 6}},
+			Got:      utils.EqualSlices(diff1[1], []int{4, 6}),
+			Expected: true,
+		},
+		{
+			Input:    []any{[]int{1, 2, 3, 3}, []int{1, 1, 2, 2}},
+			Got:      utils.EqualSlices(diff2[0], []int{3}),
+			Expected: true,
+		},
+		{
+			Input:    []any{[]int{1, 2, 3, 3}, []int{1, 1, 2, 2}},
+			Got:      utils.EqualSlices(diff2[1], []int{}),
+			Expected: true,
+		},
+	})
 }

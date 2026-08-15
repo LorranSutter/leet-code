@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"leetcode/utils"
 	"slices"
 )
 
@@ -56,13 +56,15 @@ func sortVowels2(s string) string {
 }
 
 func main() {
-	fmt.Println(sortVowels1("lEetcOde") == "lEOtcede")
-	fmt.Println(sortVowels1("lYmpH") == "lYmpH")
-	fmt.Println(sortVowels1("ofaApIUmpshjOoIIAhn") == "AfAIpIImpshjOUaoohn")
+	utils.RunTests([]utils.TestCase[string]{
+		{Input: "lEetcOde", Got: sortVowels1("lEetcOde"), Expected: "lEOtcede"},
+		{Input: "lYmpH", Got: sortVowels1("lYmpH"), Expected: "lYmpH"},
+		{Input: "ofaApIUmpshjOoIIAhn", Got: sortVowels1("ofaApIUmpshjOoIIAhn"), Expected: "AfAIpIImpshjOUaoohn"},
+	})
 
-	fmt.Println()
-
-	fmt.Println(sortVowels2("lEetcOde") == "lEOtcede")
-	fmt.Println(sortVowels2("lYmpH") == "lYmpH")
-	fmt.Println(sortVowels2("ofaApIUmpshjOoIIAhn") == "AfAIpIImpshjOUaoohn")
+	utils.RunTests([]utils.TestCase[string]{
+		{Input: "lEetcOde", Got: sortVowels2("lEetcOde"), Expected: "lEOtcede"},
+		{Input: "lYmpH", Got: sortVowels2("lYmpH"), Expected: "lYmpH"},
+		{Input: "ofaApIUmpshjOoIIAhn", Got: sortVowels2("ofaApIUmpshjOoIIAhn"), Expected: "AfAIpIImpshjOUaoohn"},
+	})
 }

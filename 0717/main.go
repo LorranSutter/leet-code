@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 // If the last bit is 1, then it's not a one-bit character
 // Otherwise, we just have to check if the next bit is 1 and skip the next bit
@@ -23,8 +23,10 @@ func isOneBitCharacter(bits []int) bool {
 }
 
 func main() {
-	fmt.Println(isOneBitCharacter([]int{1, 0, 0}) == true)
-	fmt.Println(isOneBitCharacter([]int{1, 1, 1, 0}) == false)
-	fmt.Println(isOneBitCharacter([]int{1, 1, 1, 1}) == false)
-	fmt.Println(isOneBitCharacter([]int{1, 0, 1, 0}) == false)
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: []int{1, 0, 0}, Got: isOneBitCharacter([]int{1, 0, 0}), Expected: true},
+		{Input: []int{1, 1, 1, 0}, Got: isOneBitCharacter([]int{1, 1, 1, 0}), Expected: false},
+		{Input: []int{1, 1, 1, 1}, Got: isOneBitCharacter([]int{1, 1, 1, 1}), Expected: false},
+		{Input: []int{1, 0, 1, 0}, Got: isOneBitCharacter([]int{1, 0, 1, 0}), Expected: false},
+	})
 }

@@ -1,4 +1,10 @@
+import sys
+from pathlib import Path
 from typing import List
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from utils.utils import run_tests
 
 
 class Solution:
@@ -22,8 +28,9 @@ class Solution:
         return max_subarray
 
 
-s = Solution()
-print(s.longestSubarray([1, 1, 1, 1, 2, 3, 5, 1]) == 5)
-print(s.longestSubarray([5, 2, 7, 9, 16]) == 5)
-print(s.longestSubarray([1000000000, 1000000000, 1000000000]) == 2)
-print(s.longestSubarray([3, 1, 4, 5, 3, 1, 4, 3, 1, 4]) == 4)
+run_tests(Solution().longestSubarray, [
+    {"input": [[1, 1, 1, 1, 2, 3, 5, 1]], "expected": 5},
+    {"input": [[5, 2, 7, 9, 16]], "expected": 5},
+    {"input": [[1000000000, 1000000000, 1000000000]], "expected": 2},
+    {"input": [[3, 1, 4, 5, 3, 1, 4, 3, 1, 4]], "expected": 4},
+])

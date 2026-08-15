@@ -1,26 +1,25 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func numWaterBottles(numBottles int, numExchange int) int {
+	// TODO Implement solution
+	// Off-by-one bug
 	total := numBottles
 	numNewBottles := numBottles
 
 	for numNewBottles > numExchange {
-		fmt.Println("numBottles before",numBottles)
 		numNewBottles = numBottles / numExchange
-		numBottles = numNewBottles + numBottles % numExchange
-		fmt.Println(" numBottles after",numBottles)
+		numBottles = numNewBottles + numBottles%numExchange
 		total += numNewBottles
-		fmt.Println("      total after",total)
 	}
 
-	fmt.Println(total)
 	return total
 }
 
 func main() {
-	fmt.Println(numWaterBottles(9, 3) == 13)
-	fmt.Println(numWaterBottles(15, 4) == 19)
-	// fmt.Println(numWaterBottles(15, 2) == 23)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{9, 3}, Got: numWaterBottles(9, 3), Expected: 13},
+		{Input: []any{15, 4}, Got: numWaterBottles(15, 4), Expected: 19},
+	})
 }

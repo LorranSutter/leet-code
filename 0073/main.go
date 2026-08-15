@@ -1,9 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 // 0 ms / 7.94 MB
-func setZeroes1(matrix [][]int) {
+func setZeroes1(matrix [][]int) [][]int {
 	var zeroesPos [][]int
 
 	for i := range matrix {
@@ -23,11 +25,11 @@ func setZeroes1(matrix [][]int) {
 		}
 	}
 
-	printMatrix(matrix)
+	return matrix
 }
 
 // 0 ms / 7.88 MB
-func setZeroes2(matrix [][]int) {
+func setZeroes2(matrix [][]int) [][]int {
 	m, n := len(matrix), len(matrix[0])
 	var zeroesPos []int
 
@@ -51,11 +53,11 @@ func setZeroes2(matrix [][]int) {
 		}
 	}
 
-	printMatrix(matrix)
+	return matrix
 }
 
 // 0 ms / 7.81 MB
-func setZeroes3(matrix [][]int) {
+func setZeroes3(matrix [][]int) [][]int {
 	m, n := len(matrix), len(matrix[0])
 	var firstRowHasZero, firstColumnHasZero bool
 
@@ -114,54 +116,35 @@ func setZeroes3(matrix [][]int) {
 		}
 	}
 
-	printMatrix(matrix)
-}
-
-func printMatrix(matrix [][]int) {
-	for i := range matrix {
-		fmt.Println(matrix[i])
-	}
+	return matrix
 }
 
 func main() {
-	fmt.Println("Solution 1")
-	setZeroes1([][]int{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}})
-	fmt.Println()
-	setZeroes1([][]int{{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}})
-	fmt.Println()
-	setZeroes1([][]int{{4, 1, 2, 5}, {3, 0, 5, 2}, {1, 3, 1, 0}})
-	fmt.Println()
-	setZeroes1([][]int{{4, 1, 2, 5}, {3, 5, 5, 2}, {0, 0, 0, 0}})
-	fmt.Println()
-	setZeroes1([][]int{{0, 1, 2, 5}, {0, 5, 5, 2}, {0, 2, 4, 5}})
-	fmt.Println()
-	setZeroes1([][]int{{0, 1, 2}, {9, 0, 5}, {1, 2, 0}})
+	utils.RunTests([]utils.TestCase[[][]int]{
+		{Input: [][]int{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}}, Got: setZeroes1([][]int{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}}), Expected: [][]int{{1, 0, 1}, {0, 0, 0}, {1, 0, 1}}},
+		{Input: [][]int{{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}}, Got: setZeroes1([][]int{{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}}), Expected: [][]int{{0, 0, 0, 0}, {0, 4, 5, 0}, {0, 3, 1, 0}}},
+		{Input: [][]int{{4, 1, 2, 5}, {3, 0, 5, 2}, {1, 3, 1, 0}}, Got: setZeroes1([][]int{{4, 1, 2, 5}, {3, 0, 5, 2}, {1, 3, 1, 0}}), Expected: [][]int{{4, 0, 2, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}},
+		{Input: [][]int{{4, 1, 2, 5}, {3, 5, 5, 2}, {0, 0, 0, 0}}, Got: setZeroes1([][]int{{4, 1, 2, 5}, {3, 5, 5, 2}, {0, 0, 0, 0}}), Expected: [][]int{{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}},
+		{Input: [][]int{{0, 1, 2, 5}, {0, 5, 5, 2}, {0, 2, 4, 5}}, Got: setZeroes1([][]int{{0, 1, 2, 5}, {0, 5, 5, 2}, {0, 2, 4, 5}}), Expected: [][]int{{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}},
+		{Input: [][]int{{0, 1, 2}, {9, 0, 5}, {1, 2, 0}}, Got: setZeroes1([][]int{{0, 1, 2}, {9, 0, 5}, {1, 2, 0}}), Expected: [][]int{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}},
+	})
 
-	fmt.Println("\nSolution 2")
-	setZeroes2([][]int{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}})
-	fmt.Println()
-	setZeroes2([][]int{{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}})
-	fmt.Println()
-	setZeroes2([][]int{{4, 1, 2, 5}, {3, 0, 5, 2}, {1, 3, 1, 0}})
-	fmt.Println()
-	setZeroes2([][]int{{4, 1, 2, 5}, {3, 5, 5, 2}, {0, 0, 0, 0}})
-	fmt.Println()
-	setZeroes2([][]int{{0, 1, 2, 5}, {0, 5, 5, 2}, {0, 2, 4, 5}})
-	fmt.Println()
-	setZeroes2([][]int{{0, 1, 2}, {9, 0, 5}, {1, 2, 0}})
+	utils.RunTests([]utils.TestCase[[][]int]{
+		{Input: [][]int{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}}, Got: setZeroes2([][]int{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}}), Expected: [][]int{{1, 0, 1}, {0, 0, 0}, {1, 0, 1}}},
+		{Input: [][]int{{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}}, Got: setZeroes2([][]int{{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}}), Expected: [][]int{{0, 0, 0, 0}, {0, 4, 5, 0}, {0, 3, 1, 0}}},
+		{Input: [][]int{{4, 1, 2, 5}, {3, 0, 5, 2}, {1, 3, 1, 0}}, Got: setZeroes2([][]int{{4, 1, 2, 5}, {3, 0, 5, 2}, {1, 3, 1, 0}}), Expected: [][]int{{4, 0, 2, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}},
+		{Input: [][]int{{4, 1, 2, 5}, {3, 5, 5, 2}, {0, 0, 0, 0}}, Got: setZeroes2([][]int{{4, 1, 2, 5}, {3, 5, 5, 2}, {0, 0, 0, 0}}), Expected: [][]int{{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}},
+		{Input: [][]int{{0, 1, 2, 5}, {0, 5, 5, 2}, {0, 2, 4, 5}}, Got: setZeroes2([][]int{{0, 1, 2, 5}, {0, 5, 5, 2}, {0, 2, 4, 5}}), Expected: [][]int{{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}},
+		{Input: [][]int{{0, 1, 2}, {9, 0, 5}, {1, 2, 0}}, Got: setZeroes2([][]int{{0, 1, 2}, {9, 0, 5}, {1, 2, 0}}), Expected: [][]int{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}},
+	})
 
-	fmt.Println("\nSolution 3")
-	setZeroes3([][]int{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}})
-	fmt.Println()
-	setZeroes3([][]int{{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}})
-	fmt.Println()
-	setZeroes3([][]int{{4, 1, 2, 5}, {3, 0, 5, 2}, {1, 3, 1, 0}})
-	fmt.Println()
-	setZeroes3([][]int{{4, 1, 2, 5}, {3, 5, 5, 2}, {0, 0, 0, 0}})
-	fmt.Println()
-	setZeroes3([][]int{{0, 1, 2, 5}, {0, 5, 5, 2}, {0, 2, 4, 5}})
-	fmt.Println()
-	setZeroes3([][]int{{0, 1, 2}, {9, 0, 5}, {1, 2, 0}})
-	fmt.Println()
-	setZeroes3([][]int{{1, 2, 3, 4}, {5, 0, 7, 8}, {0, 10, 11, 12}, {13, 14, 15, 0}})
+	utils.RunTests([]utils.TestCase[[][]int]{
+		{Input: [][]int{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}}, Got: setZeroes3([][]int{{1, 1, 1}, {1, 0, 1}, {1, 1, 1}}), Expected: [][]int{{1, 0, 1}, {0, 0, 0}, {1, 0, 1}}},
+		{Input: [][]int{{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}}, Got: setZeroes3([][]int{{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}}), Expected: [][]int{{0, 0, 0, 0}, {0, 4, 5, 0}, {0, 3, 1, 0}}},
+		{Input: [][]int{{4, 1, 2, 5}, {3, 0, 5, 2}, {1, 3, 1, 0}}, Got: setZeroes3([][]int{{4, 1, 2, 5}, {3, 0, 5, 2}, {1, 3, 1, 0}}), Expected: [][]int{{4, 0, 2, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}},
+		{Input: [][]int{{4, 1, 2, 5}, {3, 5, 5, 2}, {0, 0, 0, 0}}, Got: setZeroes3([][]int{{4, 1, 2, 5}, {3, 5, 5, 2}, {0, 0, 0, 0}}), Expected: [][]int{{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}},
+		{Input: [][]int{{0, 1, 2, 5}, {0, 5, 5, 2}, {0, 2, 4, 5}}, Got: setZeroes3([][]int{{0, 1, 2, 5}, {0, 5, 5, 2}, {0, 2, 4, 5}}), Expected: [][]int{{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}},
+		{Input: [][]int{{0, 1, 2}, {9, 0, 5}, {1, 2, 0}}, Got: setZeroes3([][]int{{0, 1, 2}, {9, 0, 5}, {1, 2, 0}}), Expected: [][]int{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}},
+		{Input: [][]int{{1, 2, 3, 4}, {5, 0, 7, 8}, {0, 10, 11, 12}, {13, 14, 15, 0}}, Got: setZeroes3([][]int{{1, 2, 3, 4}, {5, 0, 7, 8}, {0, 10, 11, 12}, {13, 14, 15, 0}}), Expected: [][]int{{0, 0, 3, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}},
+	})
 }

@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 // 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0
 // 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0
@@ -45,10 +45,12 @@ func longestOnes(nums []int, k int) int {
 }
 
 func main() {
-	fmt.Println(longestOnes([]int{1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0}, 2) == 6)
-	fmt.Println(longestOnes([]int{0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1}, 3) == 10)
-	fmt.Println(longestOnes([]int{0, 0, 0, 1}, 4) == 4)
-	fmt.Println(longestOnes([]int{0, 0, 1, 1}, 1) == 3)
-	fmt.Println(longestOnes([]int{0, 0, 1, 1, 1, 0, 0}, 0) == 3)
-	fmt.Println(longestOnes([]int{0, 0, 0, 0}, 0) == 0)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{[]int{1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0}, 2}, Got: longestOnes([]int{1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0}, 2), Expected: 6},
+		{Input: []any{[]int{0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1}, 3}, Got: longestOnes([]int{0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1}, 3), Expected: 10},
+		{Input: []any{[]int{0, 0, 0, 1}, 4}, Got: longestOnes([]int{0, 0, 0, 1}, 4), Expected: 4},
+		{Input: []any{[]int{0, 0, 1, 1}, 1}, Got: longestOnes([]int{0, 0, 1, 1}, 1), Expected: 3},
+		{Input: []any{[]int{0, 0, 1, 1, 1, 0, 0}, 0}, Got: longestOnes([]int{0, 0, 1, 1, 1, 0, 0}, 0), Expected: 3},
+		{Input: []any{[]int{0, 0, 0, 0}, 0}, Got: longestOnes([]int{0, 0, 0, 0}, 0), Expected: 0},
+	})
 }

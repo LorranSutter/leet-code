@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 )
 
@@ -23,12 +22,9 @@ func prefixesDivBy5(nums []int) []bool {
 }
 
 func main() {
-	result := prefixesDivBy5([]int{0, 1, 1})
-	fmt.Println(utils.DeepEqualSlices(result, []bool{true, false, false}))
-
-	result = prefixesDivBy5([]int{1, 1, 1})
-	fmt.Println(utils.DeepEqualSlices(result, []bool{false, false, false}))
-
-	result = prefixesDivBy5([]int{0, 1, 1, 1, 1, 1})
-	fmt.Println(utils.DeepEqualSlices(result, []bool{true, false, false, false, true, false}))
+	utils.RunTests([]utils.TestCase[[]bool]{
+		{Input: []int{0, 1, 1}, Got: prefixesDivBy5([]int{0, 1, 1}), Expected: []bool{true, false, false}},
+		{Input: []int{1, 1, 1}, Got: prefixesDivBy5([]int{1, 1, 1}), Expected: []bool{false, false, false}},
+		{Input: []int{0, 1, 1, 1, 1, 1}, Got: prefixesDivBy5([]int{0, 1, 1, 1, 1, 1}), Expected: []bool{true, false, false, false, true, false}},
+	})
 }

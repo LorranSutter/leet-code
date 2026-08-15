@@ -1,3 +1,11 @@
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from utils.utils import run_tests
+
+
 class Solution:
     def minimumFlips(self, n: int) -> int:
         s = str(bin(n))[2:]
@@ -7,9 +15,10 @@ class Solution:
                 flip_count += 1
         return flip_count*2
 
-s = Solution()
-print(s.minimumFlips(7) == 0)
-print(s.minimumFlips(10) == 4)
-print(s.minimumFlips(11) == 2)
-print(s.minimumFlips(17) == 0)
-print(s.minimumFlips(19) == 2)
+run_tests(Solution().minimumFlips, [
+    {"input": [7], "expected": 0},
+    {"input": [10], "expected": 4},
+    {"input": [11], "expected": 2},
+    {"input": [17], "expected": 0},
+    {"input": [19], "expected": 2},
+])

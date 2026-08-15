@@ -29,27 +29,36 @@ func modifiedList(nums []int, head *utils.ListNode) *utils.ListNode {
 }
 
 func main() {
-	head := utils.MakeList([]int{1, 2, 3, 4, 5})
-	newHead := modifiedList([]int{1, 2, 3}, head)
-	utils.PrintList(newHead)
-
-	head = utils.MakeList([]int{1, 2, 1, 2, 1, 2})
-	newHead = modifiedList([]int{1}, head)
-	utils.PrintList(newHead)
-
-	head = utils.MakeList([]int{1, 1, 1, 1, 2, 1, 2, 1, 2})
-	newHead = modifiedList([]int{1}, head)
-	utils.PrintList(newHead)
-
-	head = utils.MakeList([]int{1, 2, 1, 2, 1, 2, 1, 1, 1})
-	newHead = modifiedList([]int{1}, head)
-	utils.PrintList(newHead)
-
-	head = utils.MakeList([]int{1, 2, 3, 4})
-	newHead = modifiedList([]int{5}, head)
-	utils.PrintList(newHead)
-
-	head = utils.MakeList([]int{1, 2, 3, 4})
-	newHead = modifiedList([]int{1, 2, 3, 4}, head)
-	utils.PrintList(newHead)
+	utils.RunTests([]utils.TestCase[bool]{
+		{
+			Input:    []any{[]int{1, 2, 3}, []int{1, 2, 3, 4, 5}},
+			Got:      utils.EqualListNodes(modifiedList([]int{1, 2, 3}, utils.MakeList([]int{1, 2, 3, 4, 5})), utils.MakeList([]int{4, 5})),
+			Expected: true,
+		},
+		{
+			Input:    []any{[]int{1}, []int{1, 2, 1, 2, 1, 2}},
+			Got:      utils.EqualListNodes(modifiedList([]int{1}, utils.MakeList([]int{1, 2, 1, 2, 1, 2})), utils.MakeList([]int{2, 2, 2})),
+			Expected: true,
+		},
+		{
+			Input:    []any{[]int{1}, []int{1, 1, 1, 1, 2, 1, 2, 1, 2}},
+			Got:      utils.EqualListNodes(modifiedList([]int{1}, utils.MakeList([]int{1, 1, 1, 1, 2, 1, 2, 1, 2})), utils.MakeList([]int{2, 2, 2})),
+			Expected: true,
+		},
+		{
+			Input:    []any{[]int{1}, []int{1, 2, 1, 2, 1, 2, 1, 1, 1}},
+			Got:      utils.EqualListNodes(modifiedList([]int{1}, utils.MakeList([]int{1, 2, 1, 2, 1, 2, 1, 1, 1})), utils.MakeList([]int{2, 2, 2})),
+			Expected: true,
+		},
+		{
+			Input:    []any{[]int{5}, []int{1, 2, 3, 4}},
+			Got:      utils.EqualListNodes(modifiedList([]int{5}, utils.MakeList([]int{1, 2, 3, 4})), utils.MakeList([]int{1, 2, 3, 4})),
+			Expected: true,
+		},
+		{
+			Input:    []any{[]int{1, 2, 3, 4}, []int{1, 2, 3, 4}},
+			Got:      utils.EqualListNodes(modifiedList([]int{1, 2, 3, 4}, utils.MakeList([]int{1, 2, 3, 4})), utils.MakeList(nil)),
+			Expected: true,
+		},
+	})
 }

@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 func countUnguarded(m int, n int, guards [][]int, walls [][]int) int {
 	not_guarded := m*n - len(guards) - len(walls)
@@ -71,6 +73,16 @@ func countUnguarded(m int, n int, guards [][]int, walls [][]int) int {
 }
 
 func main() {
-	fmt.Println(countUnguarded(4, 6, [][]int{{0, 0}, {1, 1}, {2, 3}}, [][]int{{0, 1}, {2, 2}, {1, 4}}) == 7)
-	fmt.Println(countUnguarded(3, 3, [][]int{{1, 1}}, [][]int{{0, 1}, {1, 0}, {2, 1}, {1, 2}}) == 4)
+	utils.RunTests([]utils.TestCase[int]{
+		{
+			Input:    []any{4, 6, [][]int{{0, 0}, {1, 1}, {2, 3}}, [][]int{{0, 1}, {2, 2}, {1, 4}}},
+			Got:      countUnguarded(4, 6, [][]int{{0, 0}, {1, 1}, {2, 3}}, [][]int{{0, 1}, {2, 2}, {1, 4}}),
+			Expected: 7,
+		},
+		{
+			Input:    []any{3, 3, [][]int{{1, 1}}, [][]int{{0, 1}, {1, 0}, {2, 1}, {1, 2}}},
+			Got:      countUnguarded(3, 3, [][]int{{1, 1}}, [][]int{{0, 1}, {1, 0}, {2, 1}, {1, 2}}),
+			Expected: 4,
+		},
+	})
 }

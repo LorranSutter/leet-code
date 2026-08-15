@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func maxIncreasingSubarrays(nums []int) int {
 	for k := len(nums) / 2; k > 1; k-- {
@@ -21,9 +21,11 @@ func maxIncreasingSubarrays(nums []int) int {
 }
 
 func main() {
-	fmt.Println(maxIncreasingSubarrays([]int{2, 5, 7, 8, 9, 2, 3, 4, 3, 1}) == 3)
-	fmt.Println(maxIncreasingSubarrays([]int{1, 2, 3, 4, 4, 4, 4, 5, 6, 7}) == 2)
-	fmt.Println(maxIncreasingSubarrays([]int{0, 4, 16, 20, -6}) == 2)
-	fmt.Println(maxIncreasingSubarrays([]int{-15, 19}) == 1)
-	fmt.Println(maxIncreasingSubarrays([]int{5, 8, -2, -1}) == 2)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{2, 5, 7, 8, 9, 2, 3, 4, 3, 1}, Got: maxIncreasingSubarrays([]int{2, 5, 7, 8, 9, 2, 3, 4, 3, 1}), Expected: 3},
+		{Input: []int{1, 2, 3, 4, 4, 4, 4, 5, 6, 7}, Got: maxIncreasingSubarrays([]int{1, 2, 3, 4, 4, 4, 4, 5, 6, 7}), Expected: 2},
+		{Input: []int{0, 4, 16, 20, -6}, Got: maxIncreasingSubarrays([]int{0, 4, 16, 20, -6}), Expected: 2},
+		{Input: []int{-15, 19}, Got: maxIncreasingSubarrays([]int{-15, 19}), Expected: 1},
+		{Input: []int{5, 8, -2, -1}, Got: maxIncreasingSubarrays([]int{5, 8, -2, -1}), Expected: 2},
+	})
 }

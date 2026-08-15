@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 // Just make the prefix sum of the array first
 // Iterate checking the difference between the sums of the left and right subarrays
@@ -26,8 +26,10 @@ func countPartitions(nums []int) int {
 }
 
 func main() {
-	fmt.Println(countPartitions([]int{10, 10, 3, 7, 6}) == 4)
-	fmt.Println(countPartitions([]int{1, 2, 2}) == 0)
-	fmt.Println(countPartitions([]int{2, 4, 6, 8}) == 3)
-	fmt.Println(countPartitions([]int{2, 4}) == 1)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{10, 10, 3, 7, 6}, Got: countPartitions([]int{10, 10, 3, 7, 6}), Expected: 4},
+		{Input: []int{1, 2, 2}, Got: countPartitions([]int{1, 2, 2}), Expected: 0},
+		{Input: []int{2, 4, 6, 8}, Got: countPartitions([]int{2, 4, 6, 8}), Expected: 3},
+		{Input: []int{2, 4}, Got: countPartitions([]int{2, 4}), Expected: 1},
+	})
 }

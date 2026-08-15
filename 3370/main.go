@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func smallestNumber(n int) int {
 	smallest := 1
@@ -12,8 +12,10 @@ func smallestNumber(n int) int {
 }
 
 func main() {
-	fmt.Println(smallestNumber(5) == 7)
-	fmt.Println(smallestNumber(10) == 15)
-	fmt.Println(smallestNumber(3) == 3)
-	fmt.Println(smallestNumber(1000) == 3)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: 5, Got: smallestNumber(5), Expected: 7},
+		{Input: 10, Got: smallestNumber(10), Expected: 15},
+		{Input: 3, Got: smallestNumber(3), Expected: 3},
+		{Input: 1000, Got: smallestNumber(1000), Expected: 1023},
+	})
 }

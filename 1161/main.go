@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 	"math"
 )
@@ -53,12 +52,13 @@ func maxLevelSum(root *utils.TreeNode) int {
 }
 
 func main() {
-	root := utils.MakeBinaryTreeFromLevelOrder([]int{1, 7, 0, 7, -8, int(math.Inf(1)), int(math.Inf(1))}, int(math.Inf(1)))
-	fmt.Println(maxLevelSum(root) == 2)
+	root1 := utils.MakeBinaryTreeFromLevelOrder([]int{1, 7, 0, 7, -8, int(math.Inf(1)), int(math.Inf(1))}, int(math.Inf(1)))
+	root2 := utils.MakeBinaryTreeFromLevelOrder([]int{989, int(math.Inf(1)), 10250, 98693, -89388, int(math.Inf(1)), int(math.Inf(1)), int(math.Inf(1)), -32127}, int(math.Inf(1)))
+	root3 := utils.MakeBinaryTreeFromLevelOrder([]int{-100, -200, -300, -20, -5, -10, int(math.Inf(1))}, int(math.Inf(1)))
 
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{989, int(math.Inf(1)), 10250, 98693, -89388, int(math.Inf(1)), int(math.Inf(1)), int(math.Inf(1)), -32127}, int(math.Inf(1)))
-	fmt.Println(maxLevelSum(root) == 2)
-
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{-100, -200, -300, -20, -5, -10, int(math.Inf(1))}, int(math.Inf(1)))
-	fmt.Println(maxLevelSum(root) == 3)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{1, 7, 0, 7, -8}, Got: maxLevelSum(root1), Expected: 2},
+		{Input: []int{989, 10250, 98693, -89388, -32127}, Got: maxLevelSum(root2), Expected: 2},
+		{Input: []int{-100, -200, -300, -20, -5, -10}, Got: maxLevelSum(root3), Expected: 3},
+	})
 }

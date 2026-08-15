@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func maxDifference(s string) int {
 	freqs := make(map[rune]int, 26)
@@ -26,7 +26,9 @@ func maxDifference(s string) int {
 }
 
 func main() {
-	fmt.Println(maxDifference("aaaaabbc") == 3)
-	fmt.Println(maxDifference("abcabcab") == 1)
-	fmt.Println(maxDifference("ililm") == -1)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: "aaaaabbc", Got: maxDifference("aaaaabbc"), Expected: 3},
+		{Input: "abcabcab", Got: maxDifference("abcabcab"), Expected: 1},
+		{Input: "ililm", Got: maxDifference("ililm"), Expected: -1},
+	})
 }

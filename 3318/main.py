@@ -1,6 +1,12 @@
+import sys
+from pathlib import Path
 from typing import List
 from collections import defaultdict
 from functools import cmp_to_key
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from utils.utils import run_tests
 
 
 class Solution:
@@ -41,7 +47,8 @@ class Solution:
             return -1
 
 
-s = Solution()
-print(s.findXSum([1, 1, 2, 2, 3, 4, 2, 3], 6, 2) == [6, 10, 12])
-print(s.findXSum([3, 8, 7, 8, 7, 5], 2, 2) == [11, 15, 15, 15, 12])
-print(s.findXSum([9, 2, 2], 3, 3) == [13])
+run_tests(Solution().findXSum, [
+    {"input": [[1, 1, 2, 2, 3, 4, 2, 3], 6, 2], "expected": [6, 10, 12]},
+    {"input": [[3, 8, 7, 8, 7, 5], 2, 2], "expected": [11, 15, 15, 15, 12]},
+    {"input": [[9, 2, 2], 3, 3], "expected": [13]},
+])

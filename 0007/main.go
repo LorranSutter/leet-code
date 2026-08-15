@@ -1,8 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
+
+	"leetcode/utils"
 )
 
 const MAX_INT_32 int = 2147483647
@@ -58,19 +59,19 @@ func reverse2(x int) int {
 }
 
 func main() {
-	fmt.Println("Solution 1")
-	fmt.Println(reverse1(-2147483642) == 0)
-	fmt.Println(reverse1(2147483642) == 0)
-	fmt.Println(reverse1(123) == 321)
-	fmt.Println(reverse1(-123) == -321)
-	fmt.Println(reverse1(120) == 21)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: -2147483642, Got: reverse1(-2147483642), Expected: 0},
+		{Input: 2147483642, Got: reverse1(2147483642), Expected: 0},
+		{Input: 123, Got: reverse1(123), Expected: 321},
+		{Input: -123, Got: reverse1(-123), Expected: -321},
+		{Input: 120, Got: reverse1(120), Expected: 21},
+	})
 
-	fmt.Println()
-
-	fmt.Println("Solution 2")
-	fmt.Println(reverse2(-2147483642) == 0)
-	fmt.Println(reverse2(2147483642) == 0)
-	fmt.Println(reverse2(123) == 321)
-	fmt.Println(reverse2(-123) == -321)
-	fmt.Println(reverse2(120) == 21)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: -2147483642, Got: reverse2(-2147483642), Expected: 0},
+		{Input: 2147483642, Got: reverse2(2147483642), Expected: 0},
+		{Input: 123, Got: reverse2(123), Expected: 321},
+		{Input: -123, Got: reverse2(-123), Expected: -321},
+		{Input: 120, Got: reverse2(120), Expected: 21},
+	})
 }

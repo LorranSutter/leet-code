@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 // The idea here is to iterate through all possible values of a, b and c
 // We start storing all perfect squares up to n*n in a map for O(1) lookup
@@ -27,7 +29,9 @@ func countTriples(n int) int {
 }
 
 func main() {
-	fmt.Println(countTriples(5) == 2)
-	fmt.Println(countTriples(10) == 4)
-	fmt.Println(countTriples(11) == 4)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: 5, Got: countTriples(5), Expected: 2},
+		{Input: 10, Got: countTriples(10), Expected: 4},
+		{Input: 11, Got: countTriples(11), Expected: 4},
+	})
 }

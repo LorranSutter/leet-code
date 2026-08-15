@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"leetcode/utils"
 	"math"
 )
 
@@ -30,29 +30,29 @@ func isPowerOfThree2(n int) bool {
 
 	exp := math.Log(float64(n)) / LOG_3
 
-	fmt.Println(n, exp, math.Trunc(roundToFiveDecimals(exp)))
-
 	return roundToFiveDecimals(exp) == math.Trunc(exp)
 
 }
 
 func main() {
-	fmt.Println(isPowerOfThree1(1) == true)
-	fmt.Println(isPowerOfThree1(3) == true)
-	fmt.Println(isPowerOfThree1(9) == true)
-	fmt.Println(isPowerOfThree1(27) == true)
-	fmt.Println(isPowerOfThree1(81) == true)
-	fmt.Println(isPowerOfThree1(0) == false)
-	fmt.Println(isPowerOfThree1(-1) == false)
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: 1, Got: isPowerOfThree1(1), Expected: true},
+		{Input: 3, Got: isPowerOfThree1(3), Expected: true},
+		{Input: 9, Got: isPowerOfThree1(9), Expected: true},
+		{Input: 27, Got: isPowerOfThree1(27), Expected: true},
+		{Input: 81, Got: isPowerOfThree1(81), Expected: true},
+		{Input: 0, Got: isPowerOfThree1(0), Expected: false},
+		{Input: -1, Got: isPowerOfThree1(-1), Expected: false},
+	})
 
-	fmt.Println()
-
-	fmt.Println(isPowerOfThree2(1) == true)
-	fmt.Println(isPowerOfThree2(3) == true)
-	fmt.Println(isPowerOfThree2(9) == true)
-	fmt.Println(isPowerOfThree2(27) == true)
-	fmt.Println(isPowerOfThree2(81) == true)
-	fmt.Println(isPowerOfThree2(0) == false)
-	fmt.Println(isPowerOfThree2(-1) == false)
-	fmt.Println(isPowerOfThree2(43046722))
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: 1, Got: isPowerOfThree2(1), Expected: true},
+		{Input: 3, Got: isPowerOfThree2(3), Expected: true},
+		{Input: 9, Got: isPowerOfThree2(9), Expected: true},
+		{Input: 27, Got: isPowerOfThree2(27), Expected: true},
+		{Input: 81, Got: isPowerOfThree2(81), Expected: true},
+		{Input: 0, Got: isPowerOfThree2(0), Expected: false},
+		{Input: -1, Got: isPowerOfThree2(-1), Expected: false},
+		{Input: 43046722, Got: isPowerOfThree2(43046722), Expected: false},
+	})
 }

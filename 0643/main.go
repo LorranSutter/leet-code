@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func findMaxAverage(nums []int, k int) float64 {
 	max := 0
@@ -20,9 +20,11 @@ func findMaxAverage(nums []int, k int) float64 {
 }
 
 func main() {
-	fmt.Println(findMaxAverage([]int{1, 12, -5, -6, 50, 3}, 4) == 12.75)
-	fmt.Println(findMaxAverage([]int{1, 12, -5, -6, 50, 3}, 2) == 26.5)
-	fmt.Println(findMaxAverage([]int{1, 12, -5, -6, 50, 3}, 1) == 50)
-	fmt.Println(findMaxAverage([]int{9, 7, 3, 5, 6, 2, 0, 8, 1, 9}, 6) == 5.333333333333333)
-	fmt.Println(findMaxAverage([]int{5}, 1) == 5)
+	utils.RunTests([]utils.TestCase[float64]{
+		{Input: []any{[]int{1, 12, -5, -6, 50, 3}, 4}, Got: findMaxAverage([]int{1, 12, -5, -6, 50, 3}, 4), Expected: 12.75},
+		{Input: []any{[]int{1, 12, -5, -6, 50, 3}, 2}, Got: findMaxAverage([]int{1, 12, -5, -6, 50, 3}, 2), Expected: 26.5},
+		{Input: []any{[]int{1, 12, -5, -6, 50, 3}, 1}, Got: findMaxAverage([]int{1, 12, -5, -6, 50, 3}, 1), Expected: 50},
+		{Input: []any{[]int{9, 7, 3, 5, 6, 2, 0, 8, 1, 9}, 6}, Got: findMaxAverage([]int{9, 7, 3, 5, 6, 2, 0, 8, 1, 9}, 6), Expected: 5.333333333333333},
+		{Input: []any{[]int{5}, 1}, Got: findMaxAverage([]int{5}, 1), Expected: 5},
+	})
 }

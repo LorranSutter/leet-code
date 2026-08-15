@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 // The idea here is just to keep track of the remainders until we find one that is 0.
 // We can eliminate any multiple of 2 and 5, because these can't divide numbers ending in 1.
@@ -25,14 +25,16 @@ func smallestRepunitDivByK(k int) int {
 }
 
 func main() {
-	fmt.Println(smallestRepunitDivByK(1) == 1)
-	fmt.Println(smallestRepunitDivByK(2) == -1)
-	fmt.Println(smallestRepunitDivByK(3) == 3)
-	fmt.Println(smallestRepunitDivByK(4) == -1)
-	fmt.Println(smallestRepunitDivByK(5) == -1)
-	fmt.Println(smallestRepunitDivByK(5) == -1)
-	fmt.Println(smallestRepunitDivByK(9) == 9)
-	fmt.Println(smallestRepunitDivByK(11) == 2)
-	fmt.Println(smallestRepunitDivByK(13) == 6)
-	fmt.Println(smallestRepunitDivByK(17) == 16)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: 1, Got: smallestRepunitDivByK(1), Expected: 1},
+		{Input: 2, Got: smallestRepunitDivByK(2), Expected: -1},
+		{Input: 3, Got: smallestRepunitDivByK(3), Expected: 3},
+		{Input: 4, Got: smallestRepunitDivByK(4), Expected: -1},
+		{Input: 5, Got: smallestRepunitDivByK(5), Expected: -1},
+		{Input: 5, Got: smallestRepunitDivByK(5), Expected: -1},
+		{Input: 9, Got: smallestRepunitDivByK(9), Expected: 9},
+		{Input: 11, Got: smallestRepunitDivByK(11), Expected: 2},
+		{Input: 13, Got: smallestRepunitDivByK(13), Expected: 6},
+		{Input: 17, Got: smallestRepunitDivByK(17), Expected: 16},
+	})
 }

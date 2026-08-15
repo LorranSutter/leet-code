@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 )
 
@@ -30,18 +29,18 @@ func reverseList(head *utils.ListNode) *utils.ListNode {
 }
 
 func main() {
-	head := utils.MakeList([]int{1, 2, 3, 4, 5})
-	reversed := utils.MakeList([]int{5, 4, 3, 2, 1})
-	result := reverseList(head)
-	fmt.Println(utils.EqualListNodes(result, reversed))
+	head1 := utils.MakeList([]int{1, 2, 3, 4, 5})
+	reversed1 := utils.MakeList([]int{5, 4, 3, 2, 1})
 
-	head = utils.MakeList([]int{1, 2})
-	reversed = utils.MakeList([]int{2, 1})
-	result = reverseList(head)
-	fmt.Println(utils.EqualListNodes(result, reversed))
+	head2 := utils.MakeList([]int{1, 2})
+	reversed2 := utils.MakeList([]int{2, 1})
 
-	head = utils.MakeList([]int{})
-	reversed = utils.MakeList([]int{})
-	result = reverseList(head)
-	fmt.Println(utils.EqualListNodes(result, reversed))
+	head3 := utils.MakeList([]int{})
+	reversed3 := utils.MakeList([]int{})
+
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: head1, Got: utils.EqualListNodes(reverseList(head1), reversed1), Expected: true},
+		{Input: head2, Got: utils.EqualListNodes(reverseList(head2), reversed2), Expected: true},
+		{Input: head3, Got: utils.EqualListNodes(reverseList(head3), reversed3), Expected: true},
+	})
 }

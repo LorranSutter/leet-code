@@ -78,9 +78,16 @@ func rangeAddQueries(n int, queries [][]int) [][]int {
 }
 
 func main() {
-	result := rangeAddQueries(3, [][]int{{1, 1, 2, 2}, {0, 0, 1, 1}})
-	fmt.Println(utils.DeepEqualMatrix(result, [][]int{{1, 1, 0}, {1, 2, 1}, {0, 1, 1}}))
-
-	result = rangeAddQueries(2, [][]int{{0, 0, 1, 1}})
-	fmt.Println(utils.DeepEqualMatrix(result, [][]int{{1, 1}, {1, 1}}))
+	utils.RunTests([]utils.TestCase[bool]{
+		{
+			Input:    []any{3, [][]int{{1, 1, 2, 2}, {0, 0, 1, 1}}},
+			Got:      utils.DeepEqualMatrix(rangeAddQueries(3, [][]int{{1, 1, 2, 2}, {0, 0, 1, 1}}), [][]int{{1, 1, 0}, {1, 2, 1}, {0, 1, 1}}),
+			Expected: true,
+		},
+		{
+			Input:    []any{2, [][]int{{0, 0, 1, 1}}},
+			Got:      utils.DeepEqualMatrix(rangeAddQueries(2, [][]int{{0, 0, 1, 1}}), [][]int{{1, 1}, {1, 1}}),
+			Expected: true,
+		},
+	})
 }

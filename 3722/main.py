@@ -1,3 +1,11 @@
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from utils.utils import run_tests
+
+
 class Solution:
     def lexSmallest(self, s: str) -> str:
         smallest = s
@@ -13,8 +21,9 @@ class Solution:
         return smallest
 
 
-s = Solution()
-print(s.lexSmallest("dcab") == "acdb")
-print(s.lexSmallest("abba") == "aabb")
-print(s.lexSmallest("zxy") == "xzy")
-print(s.lexSmallest("lk") == "kl")
+run_tests(Solution().lexSmallest, [
+    {"input": ["dcab"], "expected": "acdb"},
+    {"input": ["abba"], "expected": "aabb"},
+    {"input": ["zxy"], "expected": "xzy"},
+    {"input": ["lk"], "expected": "kl"},
+])

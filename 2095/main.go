@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 )
 
@@ -32,23 +31,26 @@ func deleteMiddle(head *utils.ListNode) *utils.ListNode {
 }
 
 func main() {
-	head := utils.MakeList([]int{1, 3, 4, 7, 1, 2, 6})
-	newHead := deleteMiddle(head)
-	expected := utils.MakeList([]int{1, 3, 4, 1, 2, 6})
-	fmt.Println(utils.EqualListNodes(newHead, expected))
-
-	head = utils.MakeList([]int{1, 2, 3, 4})
-	newHead = deleteMiddle(head)
-	expected = utils.MakeList([]int{1, 2, 4})
-	fmt.Println(utils.EqualListNodes(newHead, expected))
-
-	head = utils.MakeList([]int{2, 1})
-	newHead = deleteMiddle(head)
-	expected = utils.MakeList([]int{2})
-	fmt.Println(utils.EqualListNodes(newHead, expected))
-
-	head = utils.MakeList([]int{2})
-	newHead = deleteMiddle(head)
-	expected = utils.MakeList([]int{})
-	fmt.Println(utils.EqualListNodes(newHead, expected))
+	utils.RunTests([]utils.TestCase[bool]{
+		{
+			Input:    []int{1, 3, 4, 7, 1, 2, 6},
+			Got:      utils.EqualListNodes(deleteMiddle(utils.MakeList([]int{1, 3, 4, 7, 1, 2, 6})), utils.MakeList([]int{1, 3, 4, 1, 2, 6})),
+			Expected: true,
+		},
+		{
+			Input:    []int{1, 2, 3, 4},
+			Got:      utils.EqualListNodes(deleteMiddle(utils.MakeList([]int{1, 2, 3, 4})), utils.MakeList([]int{1, 2, 4})),
+			Expected: true,
+		},
+		{
+			Input:    []int{2, 1},
+			Got:      utils.EqualListNodes(deleteMiddle(utils.MakeList([]int{2, 1})), utils.MakeList([]int{2})),
+			Expected: true,
+		},
+		{
+			Input:    []int{2},
+			Got:      utils.EqualListNodes(deleteMiddle(utils.MakeList([]int{2})), utils.MakeList([]int{})),
+			Expected: true,
+		},
+	})
 }

@@ -1,3 +1,5 @@
+import { runTests } from "../utils/utils.ts"
+
 function isPerfectSquare1(num: number): boolean {
     for (let i = 1; ; i++) {
         let square = i * i
@@ -32,9 +34,14 @@ function isPerfectSquare2(num: number): boolean {
     return false
 };
 
-console.log(isPerfectSquare1(16) === true)
-console.log(isPerfectSquare1(14) === false)
-console.log(isPerfectSquare1(1) === true)
-console.log(isPerfectSquare2(16) === true)
-console.log(isPerfectSquare2(14) === false)
-console.log(isPerfectSquare2(1) === true)
+runTests(isPerfectSquare1, [
+    { input: [16], expected: true },
+    { input: [14], expected: false },
+    { input: [1], expected: true },
+])
+
+runTests(isPerfectSquare2, [
+    { input: [16], expected: true },
+    { input: [14], expected: false },
+    { input: [1], expected: true },
+])

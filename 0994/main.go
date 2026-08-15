@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 // The idea here is to perform a variation of the BFS algorithm to solve the problem
 // Instead of starting in a single cell, we start from all the rotten oranges
@@ -66,7 +66,9 @@ func orangesRotting(grid [][]int) int {
 }
 
 func main() {
-	fmt.Println(orangesRotting([][]int{{2, 1, 1}, {1, 1, 0}, {0, 1, 1}}) == 4)
-	fmt.Println(orangesRotting([][]int{{2, 1, 1}, {0, 1, 1}, {1, 0, 1}}) == -1)
-	fmt.Println(orangesRotting([][]int{{20, 2}}) == 0)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: [][]int{{2, 1, 1}, {1, 1, 0}, {0, 1, 1}}, Got: orangesRotting([][]int{{2, 1, 1}, {1, 1, 0}, {0, 1, 1}}), Expected: 4},
+		{Input: [][]int{{2, 1, 1}, {0, 1, 1}, {1, 0, 1}}, Got: orangesRotting([][]int{{2, 1, 1}, {0, 1, 1}, {1, 0, 1}}), Expected: -1},
+		{Input: [][]int{{20, 2}}, Got: orangesRotting([][]int{{20, 2}}), Expected: 0},
+	})
 }

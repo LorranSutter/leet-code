@@ -1,13 +1,11 @@
 package main
 
 import (
-	"fmt"
+	"leetcode/utils"
 	"strconv"
 )
 
 func compress(chars []byte) int {
-	fmt.Println(string(chars))
-
 	current := chars[0]
 	count := 1
 	char_id := 0
@@ -40,15 +38,14 @@ func compress(chars []byte) int {
 		}
 	}
 
-	fmt.Println(string(chars))
-	fmt.Println(char_id)
-
 	return char_id
 }
 
 func main() {
-	fmt.Println(compress([]byte{'a', 'a', 'b', 'b', 'c', 'c', 'c'}) == 6)
-	fmt.Println(compress([]byte{'a'}) == 1)
-	fmt.Println(compress([]byte{'a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'}) == 4)
-	fmt.Println(compress([]byte{'a', 'a', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'a', 'a', 'b', 'b', 'a'}) == 12)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []byte{'a', 'a', 'b', 'b', 'c', 'c', 'c'}, Got: compress([]byte{'a', 'a', 'b', 'b', 'c', 'c', 'c'}), Expected: 6},
+		{Input: []byte{'a'}, Got: compress([]byte{'a'}), Expected: 1},
+		{Input: []byte{'a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'}, Got: compress([]byte{'a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'}), Expected: 4},
+		{Input: []byte{'a', 'a', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'a', 'a', 'b', 'b', 'a'}, Got: compress([]byte{'a', 'a', 'b', 'b', 'b', 'a', 'b', 'b', 'b', 'a', 'a', 'b', 'b', 'a'}), Expected: 12},
+	})
 }

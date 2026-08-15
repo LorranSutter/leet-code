@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"leetcode/utils"
 	"math"
 )
 
@@ -33,6 +33,8 @@ func divideString(s string, k int, fill byte) []string {
 }
 
 func main() {
-	fmt.Println(divideString("abcdefghi", 3, 'x'))
-	fmt.Println(divideString("abcdefghij", 3, 'x'))
+	utils.RunTests([]utils.TestCase[[]string]{
+		{Input: []any{"abcdefghi", 3, byte('x')}, Got: divideString("abcdefghi", 3, 'x'), Expected: []string{"abc", "def", "ghi"}},
+		{Input: []any{"abcdefghij", 3, byte('x')}, Got: divideString("abcdefghij", 3, 'x'), Expected: []string{"abc", "def", "ghi", "jxx"}},
+	})
 }

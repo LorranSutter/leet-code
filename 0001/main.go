@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 )
 
@@ -28,8 +27,10 @@ func twoSum(nums []int, target int) []int {
 }
 
 func main() {
-	fmt.Println(utils.DeepEqualSlices(twoSum([]int{2, 7, 11, 15}, 9), []int{0, 1}))
-	fmt.Println(utils.DeepEqualSlices(twoSum([]int{3, 2, 4}, 6), []int{1, 2}))
-	fmt.Println(utils.DeepEqualSlices(twoSum([]int{3, 3}, 6), []int{0, 1}))
-	fmt.Println(utils.DeepEqualSlices(twoSum([]int{15, 11, 7, 2}, 9), []int{2, 3}))
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: []int{2, 7, 11, 15}, Got: utils.DeepEqualSlices(twoSum([]int{2, 7, 11, 15}, 9), []int{0, 1}), Expected: true},
+		{Input: []int{3, 2, 4}, Got: utils.DeepEqualSlices(twoSum([]int{3, 2, 4}, 6), []int{1, 2}), Expected: true},
+		{Input: []int{3, 3}, Got: utils.DeepEqualSlices(twoSum([]int{3, 3}, 6), []int{0, 1}), Expected: true},
+		{Input: []int{15, 11, 7, 2}, Got: utils.DeepEqualSlices(twoSum([]int{15, 11, 7, 2}, 9), []int{2, 3}), Expected: true},
+	})
 }

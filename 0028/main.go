@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 func strStr(haystack string, needle string) int {
 	hLen := len(haystack)
@@ -28,9 +30,11 @@ func strStr(haystack string, needle string) int {
 }
 
 func main() {
-	fmt.Println(strStr("sadbutsad", "sad") == 0)
-	fmt.Println(strStr("leetcode", "leeto") == -1)
-	fmt.Println(strStr("mississippi", "issip") == 4)
-	fmt.Println(strStr("mississippi", "issipi") == -1)
-	fmt.Println(strStr("aaa", "aaaa") == -1)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []string{"sadbutsad", "sad"}, Got: strStr("sadbutsad", "sad"), Expected: 0},
+		{Input: []string{"leetcode", "leeto"}, Got: strStr("leetcode", "leeto"), Expected: -1},
+		{Input: []string{"mississippi", "issip"}, Got: strStr("mississippi", "issip"), Expected: 4},
+		{Input: []string{"mississippi", "issipi"}, Got: strStr("mississippi", "issipi"), Expected: -1},
+		{Input: []string{"aaa", "aaaa"}, Got: strStr("aaa", "aaaa"), Expected: -1},
+	})
 }

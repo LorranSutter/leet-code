@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 )
 
@@ -26,7 +25,9 @@ func kidsWithCandies(candies []int, extraCandies int) []bool {
 }
 
 func main() {
-	fmt.Println(utils.DeepEqualSlices(kidsWithCandies([]int{2, 3, 5, 1, 3}, 3), []bool{true, true, true, false, true}))
-	fmt.Println(utils.DeepEqualSlices(kidsWithCandies([]int{4, 2, 1, 1, 2}, 1), []bool{true, false, false, false, false}))
-	fmt.Println(utils.DeepEqualSlices(kidsWithCandies([]int{12, 1, 12}, 10), []bool{true, false, true}))
+	utils.RunTests([]utils.TestCase[[]bool]{
+		{Input: []any{[]int{2, 3, 5, 1, 3}, 3}, Got: kidsWithCandies([]int{2, 3, 5, 1, 3}, 3), Expected: []bool{true, true, true, false, true}},
+		{Input: []any{[]int{4, 2, 1, 1, 2}, 1}, Got: kidsWithCandies([]int{4, 2, 1, 1, 2}, 1), Expected: []bool{true, false, false, false, false}},
+		{Input: []any{[]int{12, 1, 12}, 10}, Got: kidsWithCandies([]int{12, 1, 12}, 10), Expected: []bool{true, false, true}},
+	})
 }

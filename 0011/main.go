@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 func maxArea(height []int) int {
 	start, end := 0, len(height)-1
@@ -34,10 +36,12 @@ func min(a, b int) int {
 }
 
 func main() {
-	fmt.Println(maxArea([]int{1, 8, 6, 2, 5, 4, 8, 3, 7}) == 49)
-	fmt.Println(maxArea([]int{1, 1}) == 1)
-	fmt.Println(maxArea([]int{1, 2, 1}) == 2)
-	fmt.Println(maxArea([]int{1, 2, 4, 3}) == 4)
-	fmt.Println(maxArea([]int{7, 10, 6, 2, 5, 4, 8, 3, 7}) == 56)
-	fmt.Println(maxArea([]int{5, 4, 3, 2, 1}) == 6)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{1, 8, 6, 2, 5, 4, 8, 3, 7}, Got: maxArea([]int{1, 8, 6, 2, 5, 4, 8, 3, 7}), Expected: 49},
+		{Input: []int{1, 1}, Got: maxArea([]int{1, 1}), Expected: 1},
+		{Input: []int{1, 2, 1}, Got: maxArea([]int{1, 2, 1}), Expected: 2},
+		{Input: []int{1, 2, 4, 3}, Got: maxArea([]int{1, 2, 4, 3}), Expected: 4},
+		{Input: []int{7, 10, 6, 2, 5, 4, 8, 3, 7}, Got: maxArea([]int{7, 10, 6, 2, 5, 4, 8, 3, 7}), Expected: 56},
+		{Input: []int{5, 4, 3, 2, 1}, Got: maxArea([]int{5, 4, 3, 2, 1}), Expected: 6},
+	})
 }

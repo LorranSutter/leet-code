@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 // We scan the grid looking for 1s
 // When found, we perform a DFS to find the entire island
@@ -44,6 +44,11 @@ func dfs(grid *[][]byte, m, n, i, j int) {
 }
 
 func main() {
-	fmt.Println(numIslands([][]byte{{'1', '1', '1', '1', '0'}, {'1', '1', '0', '1', '0'}, {'1', '1', '0', '0', '0'}, {'0', '0', '0', '0', '0'}}) == 1)
-	fmt.Println(numIslands([][]byte{{'1', '1', '0', '0', '0'}, {'1', '1', '0', '0', '0'}, {'0', '0', '1', '0', '0'}, {'0', '0', '0', '1', '1'}}) == 3)
+	grid1 := [][]byte{{'1', '1', '1', '1', '0'}, {'1', '1', '0', '1', '0'}, {'1', '1', '0', '0', '0'}, {'0', '0', '0', '0', '0'}}
+	grid2 := [][]byte{{'1', '1', '0', '0', '0'}, {'1', '1', '0', '0', '0'}, {'0', '0', '1', '0', '0'}, {'0', '0', '0', '1', '1'}}
+
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: grid1, Got: numIslands(grid1), Expected: 1},
+		{Input: grid2, Got: numIslands(grid2), Expected: 3},
+	})
 }

@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func gcdOfStrings(str1 string, str2 string) string {
 	len1, len2 := len(str1), len(str2)
@@ -41,10 +41,12 @@ func GCD(a, b int) int {
 }
 
 func main() {
-	fmt.Println(gcdOfStrings("ABCABC", "ABC") == "ABC")
-	fmt.Println(gcdOfStrings("ABABAB", "ABAB") == "AB")
-	fmt.Println(gcdOfStrings("ABABABAB", "ABAB") == "ABAB")
-	fmt.Println(gcdOfStrings("LEET", "CODE") == "")
-	fmt.Println(gcdOfStrings("TAUXXTAUXXTAUXXTAUXXTAUXX", "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX") == "TAUXX")
-	fmt.Println(gcdOfStrings("AAAAAAAAA", "AAACCC") == "")
+	utils.RunTests([]utils.TestCase[string]{
+		{Input: []string{"ABCABC", "ABC"}, Got: gcdOfStrings("ABCABC", "ABC"), Expected: "ABC"},
+		{Input: []string{"ABABAB", "ABAB"}, Got: gcdOfStrings("ABABAB", "ABAB"), Expected: "AB"},
+		{Input: []string{"ABABABAB", "ABAB"}, Got: gcdOfStrings("ABABABAB", "ABAB"), Expected: "ABAB"},
+		{Input: []string{"LEET", "CODE"}, Got: gcdOfStrings("LEET", "CODE"), Expected: ""},
+		{Input: []string{"TAUXXTAUXXTAUXXTAUXXTAUXX", "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX"}, Got: gcdOfStrings("TAUXXTAUXXTAUXXTAUXXTAUXX", "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX"), Expected: "TAUXX"},
+		{Input: []string{"AAAAAAAAA", "AAACCC"}, Got: gcdOfStrings("AAAAAAAAA", "AAACCC"), Expected: ""},
+	})
 }

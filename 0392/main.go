@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func isSubsequence(s string, t string) bool {
 	sLen := len(s)
@@ -22,11 +22,13 @@ func isSubsequence(s string, t string) bool {
 }
 
 func main() {
-	fmt.Println(isSubsequence("ace", "abcde") == true)
-	fmt.Println(isSubsequence("aec", "abcde") == false)
-	fmt.Println(isSubsequence("abc", "ahbgdc") == true)
-	fmt.Println(isSubsequence("axc", "ahbgdc") == false)
-	fmt.Println(isSubsequence("aaa", "ahbgdc") == false)
-	fmt.Println(isSubsequence("aaa", "ahbgaa") == true)
-	fmt.Println(isSubsequence("", "ahbgdc") == true)
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: []string{"ace", "abcde"}, Got: isSubsequence("ace", "abcde"), Expected: true},
+		{Input: []string{"aec", "abcde"}, Got: isSubsequence("aec", "abcde"), Expected: false},
+		{Input: []string{"abc", "ahbgdc"}, Got: isSubsequence("abc", "ahbgdc"), Expected: true},
+		{Input: []string{"axc", "ahbgdc"}, Got: isSubsequence("axc", "ahbgdc"), Expected: false},
+		{Input: []string{"aaa", "ahbgdc"}, Got: isSubsequence("aaa", "ahbgdc"), Expected: false},
+		{Input: []string{"aaa", "ahbgaa"}, Got: isSubsequence("aaa", "ahbgaa"), Expected: true},
+		{Input: []string{"", "ahbgdc"}, Got: isSubsequence("", "ahbgdc"), Expected: true},
+	})
 }

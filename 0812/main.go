@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"leetcode/utils"
 	"math"
 )
 
@@ -15,11 +15,13 @@ func combinations(p [][]int, size int, accumulated []int) {
 }
 
 func largestTriangleArea(points [][]int) float64 {
-
+	// TODO Implement solution
 	return 0
 }
 
 func main() {
-	fmt.Println(largestTriangleArea([][]int{{0, 0}, {0, 1}, {1, 0}, {0, 2}, {2, 0}}) == 2.0)
-	fmt.Println(largestTriangleArea([][]int{{1, 0}, {0, 0}, {0, 1}}) == 0.5)
+	utils.RunTests([]utils.TestCase[float64]{
+		{Input: [][]int{{0, 0}, {0, 1}, {1, 0}, {0, 2}, {2, 0}}, Got: largestTriangleArea([][]int{{0, 0}, {0, 1}, {1, 0}, {0, 2}, {2, 0}}), Expected: 2.0},
+		{Input: [][]int{{1, 0}, {0, 0}, {0, 1}}, Got: largestTriangleArea([][]int{{1, 0}, {0, 0}, {0, 1}}), Expected: 0.5},
+	})
 }

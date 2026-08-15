@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 func removeStars(s string) string {
 	result := ""
@@ -22,6 +24,8 @@ func removeStars(s string) string {
 }
 
 func main() {
-	fmt.Println(removeStars("leet**cod*e") == "lecoe")
-	fmt.Println(removeStars("erase*****") == "")
+	utils.RunTests([]utils.TestCase[string]{
+		{Input: "leet**cod*e", Got: removeStars("leet**cod*e"), Expected: "lecoe"},
+		{Input: "erase*****", Got: removeStars("erase*****"), Expected: ""},
+	})
 }

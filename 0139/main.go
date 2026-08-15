@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 func wordBreak(s string, wordDict []string) bool {
 	words := make(map[string]bool, len(wordDict))
@@ -24,8 +26,11 @@ func wordBreak(s string, wordDict []string) bool {
 }
 
 func main() {
-	fmt.Println(wordBreak("leetcode", []string{"leet", "code"}) == true)
-	fmt.Println(wordBreak("applepenapple", []string{"apple", "pen"}) == true)
-	fmt.Println(wordBreak("catsandog", []string{"cats", "dog", "sand", "and", "cat"}) == false)
-	fmt.Println(wordBreak("aaaaaaa", []string{"aaaa", "aaa"}) == true)
+	// TODO Implement solution
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: []any{"leetcode", []string{"leet", "code"}}, Got: wordBreak("leetcode", []string{"leet", "code"}), Expected: true},
+		{Input: []any{"applepenapple", []string{"apple", "pen"}}, Got: wordBreak("applepenapple", []string{"apple", "pen"}), Expected: true},
+		{Input: []any{"catsandog", []string{"cats", "dog", "sand", "and", "cat"}}, Got: wordBreak("catsandog", []string{"cats", "dog", "sand", "and", "cat"}), Expected: false},
+		{Input: []any{"aaaaaaa", []string{"aaaa", "aaa"}}, Got: wordBreak("aaaaaaa", []string{"aaaa", "aaa"}), Expected: true},
+	})
 }

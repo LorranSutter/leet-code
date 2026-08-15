@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 func numberOfBeams(bank []string) int {
 	lasers, prev, current := 0, 0, 0
@@ -23,8 +25,10 @@ func numberOfBeams(bank []string) int {
 }
 
 func main() {
-	fmt.Println(numberOfBeams([]string{"011001", "000000", "010100", "001000"}) == 8)
-	fmt.Println(numberOfBeams([]string{"000", "111", "000"}) == 0)
-	fmt.Println(numberOfBeams([]string{"010", "111", "010"}) == 6)
-	fmt.Println(numberOfBeams([]string{"010", "001", "010"}) == 2)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []string{"011001", "000000", "010100", "001000"}, Got: numberOfBeams([]string{"011001", "000000", "010100", "001000"}), Expected: 8},
+		{Input: []string{"000", "111", "000"}, Got: numberOfBeams([]string{"000", "111", "000"}), Expected: 0},
+		{Input: []string{"010", "111", "010"}, Got: numberOfBeams([]string{"010", "111", "010"}), Expected: 6},
+		{Input: []string{"010", "001", "010"}, Got: numberOfBeams([]string{"010", "001", "010"}), Expected: 2},
+	})
 }

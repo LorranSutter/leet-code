@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 )
 
@@ -50,25 +49,23 @@ func goodNodesHelper2(node *utils.TreeNode, maxVal int, count *int) {
 }
 
 func main() {
-	fmt.Println("Solution 01")
-	root := utils.MakeBinaryTreeFromLevelOrder([]int{3, 1, 4, 3, -1, 1, 5}, -1)
-	fmt.Println(goodNodes1(root) == 4)
+	root1a := utils.MakeBinaryTreeFromLevelOrder([]int{3, 1, 4, 3, -1, 1, 5}, -1)
+	root2a := utils.MakeBinaryTreeFromLevelOrder([]int{3, 3, -1, 4, 2}, -1)
+	root3a := utils.MakeBinaryTreeFromLevelOrder([]int{1}, -1)
 
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{3, 3, -1, 4, 2}, -1)
-	fmt.Println(goodNodes1(root) == 3)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{3, 1, 4, 3, -1, 1, 5}, Got: goodNodes1(root1a), Expected: 4},
+		{Input: []int{3, 3, -1, 4, 2}, Got: goodNodes1(root2a), Expected: 3},
+		{Input: []int{1}, Got: goodNodes1(root3a), Expected: 1},
+	})
 
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{1}, -1)
-	fmt.Println(goodNodes1(root) == 1)
+	root1b := utils.MakeBinaryTreeFromLevelOrder([]int{3, 1, 4, 3, -1, 1, 5}, -1)
+	root2b := utils.MakeBinaryTreeFromLevelOrder([]int{3, 3, -1, 4, 2}, -1)
+	root3b := utils.MakeBinaryTreeFromLevelOrder([]int{1}, -1)
 
-	fmt.Println()
-
-	fmt.Println("Solution 02")
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{3, 1, 4, 3, -1, 1, 5}, -1)
-	fmt.Println(goodNodes2(root) == 4)
-
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{3, 3, -1, 4, 2}, -1)
-	fmt.Println(goodNodes2(root) == 3)
-
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{1}, -1)
-	fmt.Println(goodNodes2(root) == 1)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{3, 1, 4, 3, -1, 1, 5}, Got: goodNodes2(root1b), Expected: 4},
+		{Input: []int{3, 3, -1, 4, 2}, Got: goodNodes2(root2b), Expected: 3},
+		{Input: []int{1}, Got: goodNodes2(root3b), Expected: 1},
+	})
 }

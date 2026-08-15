@@ -56,9 +56,16 @@ func main() {
 	list1 := utils.MakeList([]int{1, 1, 4, 5})
 	list2 := utils.MakeList([]int{1, 3, 4})
 	list3 := utils.MakeList([]int{2, 6})
-	print(mergeKLists([]*utils.ListNode{list1}))
-	print(mergeKLists([]*utils.ListNode{list1, list2, list3}))
-	// print(mergeKLists([]*utils.ListNode{list1, list2, list3, {}})) // Fix this case
-	print(mergeKLists([]*utils.ListNode{}))   // Fix this case
-	print(mergeKLists([]*utils.ListNode{{}})) // Fix this case ?
+
+	c1 := utils.EqualListNodes(mergeKLists([]*utils.ListNode{list1}), utils.MakeList([]int{1, 1, 4, 5}))
+	c2 := utils.EqualListNodes(mergeKLists([]*utils.ListNode{list1, list2, list3}), utils.MakeList([]int{1, 1, 1, 2, 3, 4, 4, 5, 6}))
+	c3 := utils.EqualListNodes(mergeKLists([]*utils.ListNode{}), utils.MakeList([]int{0}))
+	c4 := utils.EqualListNodes(mergeKLists([]*utils.ListNode{{}}), utils.MakeList([]int{0}))
+
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: [][]int{{1, 1, 4, 5}}, Got: c1, Expected: true},
+		{Input: [][]int{{1, 1, 4, 5}, {1, 3, 4}, {2, 6}}, Got: c2, Expected: true},
+		{Input: [][]int{}, Got: c3, Expected: true},
+		{Input: [][]int{{}}, Got: c4, Expected: true},
+	})
 }

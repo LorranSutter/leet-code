@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"leetcode/utils"
 )
 
 // 0 ms / 5.01 MB
@@ -21,6 +21,8 @@ func missingMultiple(nums []int, k int) int {
 }
 
 func main() {
-	fmt.Println(missingMultiple([]int{8, 2, 3, 4, 6}, 2) == 10)
-	fmt.Println(missingMultiple([]int{1, 4, 7, 10, 15}, 5) == 5)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{[]int{8, 2, 3, 4, 6}, 2}, Got: missingMultiple([]int{8, 2, 3, 4, 6}, 2), Expected: 10},
+		{Input: []any{[]int{1, 4, 7, 10, 15}, 5}, Got: missingMultiple([]int{1, 4, 7, 10, 15}, 5), Expected: 5},
+	})
 }

@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func countOdds(low int, high int) int {
 	if high%2 == 0 && low%2 == 0 {
@@ -11,10 +11,12 @@ func countOdds(low int, high int) int {
 }
 
 func main() {
-	fmt.Println(countOdds(3, 7) == 3)
-	fmt.Println(countOdds(8, 10) == 1)
-	fmt.Println(countOdds(7, 10) == 2)
-	fmt.Println(countOdds(2, 11) == 5)
-	fmt.Println(countOdds(2, 2) == 0)
-	fmt.Println(countOdds(7, 7) == 1)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{3, 7}, Got: countOdds(3, 7), Expected: 3},
+		{Input: []any{8, 10}, Got: countOdds(8, 10), Expected: 1},
+		{Input: []any{7, 10}, Got: countOdds(7, 10), Expected: 2},
+		{Input: []any{2, 11}, Got: countOdds(2, 11), Expected: 5},
+		{Input: []any{2, 2}, Got: countOdds(2, 2), Expected: 0},
+		{Input: []any{7, 7}, Got: countOdds(7, 7), Expected: 1},
+	})
 }

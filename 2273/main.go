@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 	"maps"
 )
@@ -31,6 +30,8 @@ func removeAnagrams(words []string) []string {
 }
 
 func main() {
-	fmt.Println(utils.DeepEqualSlices(removeAnagrams([]string{"abba", "baba", "bbaa", "cd", "cd"}), []string{"abba", "cd"}))
-	fmt.Println(utils.DeepEqualSlices(removeAnagrams([]string{"a", "b", "c", "d", "e"}), []string{"a", "b", "c", "d", "e"}))
+	utils.RunTests([]utils.TestCase[[]string]{
+		{Input: []string{"abba", "baba", "bbaa", "cd", "cd"}, Got: removeAnagrams([]string{"abba", "baba", "bbaa", "cd", "cd"}), Expected: []string{"abba", "cd"}},
+		{Input: []string{"a", "b", "c", "d", "e"}, Got: removeAnagrams([]string{"a", "b", "c", "d", "e"}), Expected: []string{"a", "b", "c", "d", "e"}},
+	})
 }

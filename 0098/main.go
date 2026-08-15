@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 type TreeNode struct {
 	Val   int
@@ -67,23 +69,15 @@ func isValidBST(root *TreeNode) bool {
 	return leftIsValidBST(root.Val, root.Left) && rightIsValidBST(root.Val, root.Right)
 }
 
-func printBst(root *TreeNode) {
-	if root != nil {
-		fmt.Print(root.Val, " ")
-		printBst(root.Left)
-		printBst(root.Right)
-	}
-}
-
 func main() {
+	// TODO Implement solution
 	//  2
 	// / \
 	//1   3
 	root := &TreeNode{Val: 2}
 	root.Left = &TreeNode{Val: 1}
 	root.Right = &TreeNode{Val: 3}
-	printBst(root)
-	fmt.Println(isValidBST(root) == true)
+	c1 := isValidBST(root)
 
 	//  5
 	// / \
@@ -95,8 +89,7 @@ func main() {
 	root.Right = &TreeNode{Val: 4}
 	root.Right.Left = &TreeNode{Val: 3}
 	root.Right.Right = &TreeNode{Val: 6}
-	printBst(root)
-	fmt.Println(isValidBST(root) == false)
+	c2 := isValidBST(root)
 
 	//  5
 	// / \
@@ -108,8 +101,7 @@ func main() {
 	root.Right = &TreeNode{Val: 6}
 	root.Right.Left = &TreeNode{Val: 5}
 	root.Right.Right = &TreeNode{Val: 7}
-	printBst(root)
-	fmt.Println(isValidBST(root) == true)
+	c3 := isValidBST(root)
 
 	//  5
 	// /
@@ -119,8 +111,7 @@ func main() {
 	root = &TreeNode{Val: 5}
 	root.Left = &TreeNode{Val: 4}
 	root.Left.Right = &TreeNode{Val: 5}
-	printBst(root)
-	fmt.Println(isValidBST(root) == true)
+	c4 := isValidBST(root)
 
 	//  5
 	// /
@@ -130,8 +121,7 @@ func main() {
 	root = &TreeNode{Val: 5}
 	root.Left = &TreeNode{Val: 4}
 	root.Left.Right = &TreeNode{Val: 1}
-	printBst(root)
-	fmt.Println(isValidBST(root) == false)
+	c5 := isValidBST(root)
 
 	//  2
 	// / \
@@ -139,8 +129,7 @@ func main() {
 	root = &TreeNode{Val: 2}
 	root.Left = &TreeNode{Val: 2}
 	root.Right = &TreeNode{Val: 2}
-	printBst(root)
-	fmt.Println(isValidBST(root) == false)
+	c6 := isValidBST(root)
 
 	//  5
 	// / \
@@ -152,6 +141,15 @@ func main() {
 	root.Right = &TreeNode{Val: 6}
 	root.Right.Left = &TreeNode{Val: 3}
 	root.Right.Right = &TreeNode{Val: 7}
-	printBst(root)
-	fmt.Println(isValidBST(root) == false)
+	c7 := isValidBST(root)
+
+	utils.RunTests([]utils.TestCase[bool]{
+		{Input: []int{2, 1, 3}, Got: c1, Expected: true},
+		{Input: []int{5, 1, 4, 3, 6}, Got: c2, Expected: false},
+		{Input: []int{5, 1, 6, 5, 7}, Got: c3, Expected: true},
+		{Input: []int{5, 4, 5}, Got: c4, Expected: true},
+		{Input: []int{5, 4, 1}, Got: c5, Expected: false},
+		{Input: []int{2, 2, 2}, Got: c6, Expected: false},
+		{Input: []int{5, 4, 6, 3, 7}, Got: c7, Expected: false},
+	})
 }

@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 // 3 ms / 8.34 MB
 // Simple prefix sum
@@ -40,15 +40,15 @@ func pivotIndex2(nums []int) int {
 }
 
 func main() {
-	fmt.Println("Solution 01")
-	fmt.Println(pivotIndex1([]int{1, 7, 3, 6, 5, 6}) == 3)
-	fmt.Println(pivotIndex1([]int{1, 2, 3}) == -1)
-	fmt.Println(pivotIndex1([]int{2, 1, -1}) == 0)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{1, 7, 3, 6, 5, 6}, Got: pivotIndex1([]int{1, 7, 3, 6, 5, 6}), Expected: 3},
+		{Input: []int{1, 2, 3}, Got: pivotIndex1([]int{1, 2, 3}), Expected: -1},
+		{Input: []int{2, 1, -1}, Got: pivotIndex1([]int{2, 1, -1}), Expected: 0},
+	})
 
-	fmt.Println()
-
-	fmt.Println("Solution 02")
-	fmt.Println(pivotIndex2([]int{1, 7, 3, 6, 5, 6}) == 3)
-	fmt.Println(pivotIndex2([]int{1, 2, 3}) == -1)
-	fmt.Println(pivotIndex2([]int{2, 1, -1}) == 0)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{1, 7, 3, 6, 5, 6}, Got: pivotIndex2([]int{1, 7, 3, 6, 5, 6}), Expected: 3},
+		{Input: []int{1, 2, 3}, Got: pivotIndex2([]int{1, 2, 3}), Expected: -1},
+		{Input: []int{2, 1, -1}, Got: pivotIndex2([]int{2, 1, -1}), Expected: 0},
+	})
 }

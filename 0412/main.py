@@ -1,4 +1,10 @@
+import sys
+from pathlib import Path
 from typing import List
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from utils.utils import run_tests
 
 
 class Solution:
@@ -26,5 +32,18 @@ class Solution:
                 continue
             else:
                 answer[i] = str(i+1)
-            
+
         return answer
+
+
+run_tests(Solution().fizzBuzz, [
+    {"input": [3], "expected": ["1", "2", "Fizz"]},
+    {"input": [5], "expected": ["1", "2", "Fizz", "4", "Buzz"]},
+    {
+        "input": [15],
+        "expected": [
+            "1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz",
+            "11", "Fizz", "13", "14", "FizzBuzz",
+        ],
+    },
+])

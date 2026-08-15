@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func countValidSelections(nums []int) int {
 	lenPrefix := len(nums) + 1
@@ -31,10 +31,12 @@ func countValidSelections(nums []int) int {
 }
 
 func main() {
-	fmt.Println(countValidSelections([]int{1, 0, 2, 0, 3}) == 2)
-	fmt.Println(countValidSelections([]int{1, 0, 2, 0, 4}) == 1)
-	fmt.Println(countValidSelections([]int{1, 0, 2, 0, 2}) == 1)
-	fmt.Println(countValidSelections([]int{2, 3, 4, 0, 4, 1, 0}) == 0)
-	fmt.Println(countValidSelections([]int{0}) == 2)
-	fmt.Println(countValidSelections([]int{16, 13, 10, 0, 0, 0, 10, 6, 7, 8, 7}) == 3)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{1, 0, 2, 0, 3}, Got: countValidSelections([]int{1, 0, 2, 0, 3}), Expected: 2},
+		{Input: []int{1, 0, 2, 0, 4}, Got: countValidSelections([]int{1, 0, 2, 0, 4}), Expected: 1},
+		{Input: []int{1, 0, 2, 0, 2}, Got: countValidSelections([]int{1, 0, 2, 0, 2}), Expected: 1},
+		{Input: []int{2, 3, 4, 0, 4, 1, 0}, Got: countValidSelections([]int{2, 3, 4, 0, 4, 1, 0}), Expected: 0},
+		{Input: []int{0}, Got: countValidSelections([]int{0}), Expected: 2},
+		{Input: []int{16, 13, 10, 0, 0, 0, 10, 6, 7, 8, 7}, Got: countValidSelections([]int{16, 13, 10, 0, 0, 0, 10, 6, 7, 8, 7}), Expected: 3},
+	})
 }

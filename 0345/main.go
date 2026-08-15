@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func reverseVowels(s string) string {
 	vowels := map[byte]bool{
@@ -30,8 +30,10 @@ func reverseVowels(s string) string {
 }
 
 func main() {
-	fmt.Println(reverseVowels("IceCreAm") == "AceCreIm")
-	fmt.Println(reverseVowels("leetcode") == "leotcede")
-	fmt.Println(reverseVowels("aeiou") == "uoiea")
-	fmt.Println(reverseVowels("aeiJou") == "uoiJea")
+	utils.RunTests([]utils.TestCase[string]{
+		{Input: "IceCreAm", Got: reverseVowels("IceCreAm"), Expected: "AceCreIm"},
+		{Input: "leetcode", Got: reverseVowels("leetcode"), Expected: "leotcede"},
+		{Input: "aeiou", Got: reverseVowels("aeiou"), Expected: "uoiea"},
+		{Input: "aeiJou", Got: reverseVowels("aeiJou"), Expected: "uoiJea"},
+	})
 }

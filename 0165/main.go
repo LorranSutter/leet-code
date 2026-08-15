@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
+
+	"leetcode/utils"
 )
 
 func max(num1 int, num2 int) int {
@@ -107,31 +108,33 @@ func compareVersion2(version1 string, version2 string) int {
 }
 
 func main() {
-	fmt.Println(compareVersion1("1", "1.0.0") == 0)
-	fmt.Println(compareVersion1("1", "1.10") == -1)
-	fmt.Println(compareVersion1("1.10", "1") == 1)
-	fmt.Println(compareVersion1("1.2", "1.10") == -1)
-	fmt.Println(compareVersion1("2.2", "1.10") == 1)
-	fmt.Println(compareVersion1("0.2", "1.10") == -1)
-	fmt.Println(compareVersion1("1.01", "1.001") == 0)
-	fmt.Println(compareVersion1("1.0", "1.0.0.0") == 0)
-	fmt.Println(compareVersion1("1.0", "1.0.0.0.1") == -1)
-	fmt.Println(compareVersion1("1.0.0.0.1", "1.0") == 1)
-	fmt.Println(compareVersion1("7.5.2.4", "7.5.3") == -1)
-	fmt.Println(compareVersion1("7.5.3", "7.5.2.4") == 1)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []string{"1", "1.0.0"}, Got: compareVersion1("1", "1.0.0"), Expected: 0},
+		{Input: []string{"1", "1.10"}, Got: compareVersion1("1", "1.10"), Expected: -1},
+		{Input: []string{"1.10", "1"}, Got: compareVersion1("1.10", "1"), Expected: 1},
+		{Input: []string{"1.2", "1.10"}, Got: compareVersion1("1.2", "1.10"), Expected: -1},
+		{Input: []string{"2.2", "1.10"}, Got: compareVersion1("2.2", "1.10"), Expected: 1},
+		{Input: []string{"0.2", "1.10"}, Got: compareVersion1("0.2", "1.10"), Expected: -1},
+		{Input: []string{"1.01", "1.001"}, Got: compareVersion1("1.01", "1.001"), Expected: 0},
+		{Input: []string{"1.0", "1.0.0.0"}, Got: compareVersion1("1.0", "1.0.0.0"), Expected: 0},
+		{Input: []string{"1.0", "1.0.0.0.1"}, Got: compareVersion1("1.0", "1.0.0.0.1"), Expected: -1},
+		{Input: []string{"1.0.0.0.1", "1.0"}, Got: compareVersion1("1.0.0.0.1", "1.0"), Expected: 1},
+		{Input: []string{"7.5.2.4", "7.5.3"}, Got: compareVersion1("7.5.2.4", "7.5.3"), Expected: -1},
+		{Input: []string{"7.5.3", "7.5.2.4"}, Got: compareVersion1("7.5.3", "7.5.2.4"), Expected: 1},
+	})
 
-	fmt.Println()
-
-	fmt.Println(compareVersion2("1", "1.0.0") == 0)
-	fmt.Println(compareVersion2("1", "1.10") == -1)
-	fmt.Println(compareVersion2("1.10", "1") == 1)
-	fmt.Println(compareVersion2("1.2", "1.10") == -1)
-	fmt.Println(compareVersion2("2.2", "1.10") == 1)
-	fmt.Println(compareVersion2("0.2", "1.10") == -1)
-	fmt.Println(compareVersion2("1.01", "1.001") == 0)
-	fmt.Println(compareVersion2("1.0", "1.0.0.0") == 0)
-	fmt.Println(compareVersion2("1.0", "1.0.0.0.1") == -1)
-	fmt.Println(compareVersion2("1.0.0.0.1", "1.0") == 1)
-	fmt.Println(compareVersion2("7.5.2.4", "7.5.3") == -1)
-	fmt.Println(compareVersion2("7.5.3", "7.5.2.4") == 1)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []string{"1", "1.0.0"}, Got: compareVersion2("1", "1.0.0"), Expected: 0},
+		{Input: []string{"1", "1.10"}, Got: compareVersion2("1", "1.10"), Expected: -1},
+		{Input: []string{"1.10", "1"}, Got: compareVersion2("1.10", "1"), Expected: 1},
+		{Input: []string{"1.2", "1.10"}, Got: compareVersion2("1.2", "1.10"), Expected: -1},
+		{Input: []string{"2.2", "1.10"}, Got: compareVersion2("2.2", "1.10"), Expected: 1},
+		{Input: []string{"0.2", "1.10"}, Got: compareVersion2("0.2", "1.10"), Expected: -1},
+		{Input: []string{"1.01", "1.001"}, Got: compareVersion2("1.01", "1.001"), Expected: 0},
+		{Input: []string{"1.0", "1.0.0.0"}, Got: compareVersion2("1.0", "1.0.0.0"), Expected: 0},
+		{Input: []string{"1.0", "1.0.0.0.1"}, Got: compareVersion2("1.0", "1.0.0.0.1"), Expected: -1},
+		{Input: []string{"1.0.0.0.1", "1.0"}, Got: compareVersion2("1.0.0.0.1", "1.0"), Expected: 1},
+		{Input: []string{"7.5.2.4", "7.5.3"}, Got: compareVersion2("7.5.2.4", "7.5.3"), Expected: -1},
+		{Input: []string{"7.5.3", "7.5.2.4"}, Got: compareVersion2("7.5.3", "7.5.2.4"), Expected: 1},
+	})
 }

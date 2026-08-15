@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
-	"leetcode/utils"
 	"strings"
+
+	"leetcode/utils"
 )
 
 type Row struct {
@@ -76,37 +76,45 @@ func justifySentence(row Row, maxWidth int, lastRow bool) string {
 }
 
 func main() {
-	fmt.Println(
-		utils.DeepEqualSlices(
-			fullJustify([]string{"This", "is", "an", "example", "of", "text", "justification."}, 16),
-			[]string{
-				"This    is    an",
-				"example  of text",
-				"justification.  ",
-			},
-		),
-	)
-	fmt.Println(
-		utils.DeepEqualSlices(
-			fullJustify([]string{"What", "must", "be", "acknowledgment", "shall", "be"}, 16),
-			[]string{
-				"What   must   be",
-				"acknowledgment  ",
-				"shall be        ",
-			},
-		),
-	)
-	fmt.Println(
-		utils.DeepEqualSlices(
-			fullJustify([]string{"Science", "is", "what", "we", "understand", "well", "enough", "to", "explain", "to", "a", "computer.", "Art", "is", "everything", "else", "we", "do"}, 20),
-			[]string{
-				"Science  is  what we",
-				"understand      well",
-				"enough to explain to",
-				"a  computer.  Art is",
-				"everything  else  we",
-				"do                  ",
-			},
-		),
-	)
+	utils.RunTests([]utils.TestCase[bool]{
+		{
+			Input: []string{"This", "is", "an", "example", "of", "text", "justification."},
+			Got: utils.DeepEqualSlices(
+				fullJustify([]string{"This", "is", "an", "example", "of", "text", "justification."}, 16),
+				[]string{
+					"This    is    an",
+					"example  of text",
+					"justification.  ",
+				},
+			),
+			Expected: true,
+		},
+		{
+			Input: []string{"What", "must", "be", "acknowledgment", "shall", "be"},
+			Got: utils.DeepEqualSlices(
+				fullJustify([]string{"What", "must", "be", "acknowledgment", "shall", "be"}, 16),
+				[]string{
+					"What   must   be",
+					"acknowledgment  ",
+					"shall be        ",
+				},
+			),
+			Expected: true,
+		},
+		{
+			Input: []string{"Science", "is", "what", "we", "understand", "well", "enough", "to", "explain", "to", "a", "computer.", "Art", "is", "everything", "else", "we", "do"},
+			Got: utils.DeepEqualSlices(
+				fullJustify([]string{"Science", "is", "what", "we", "understand", "well", "enough", "to", "explain", "to", "a", "computer.", "Art", "is", "everything", "else", "we", "do"}, 20),
+				[]string{
+					"Science  is  what we",
+					"understand      well",
+					"enough to explain to",
+					"a  computer.  Art is",
+					"everything  else  we",
+					"do                  ",
+				},
+			),
+			Expected: true,
+		},
+	})
 }

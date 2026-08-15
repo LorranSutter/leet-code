@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 )
 
@@ -21,9 +20,8 @@ func maxDepth(root *utils.TreeNode) int {
 }
 
 func main() {
-	root := utils.MakeBinaryTreeFromLevelOrder([]int{3, 9, 20, -1, -1, 15, 7}, -1)
-	fmt.Println(maxDepth(root) == 3)
-
-	root = utils.MakeBinaryTreeFromLevelOrder([]int{1, -1, 2}, -1)
-	fmt.Println(maxDepth(root) == 2)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{3, 9, 20, -1, -1, 15, 7}, Got: maxDepth(utils.MakeBinaryTreeFromLevelOrder([]int{3, 9, 20, -1, -1, 15, 7}, -1)), Expected: 3},
+		{Input: []int{1, -1, 2}, Got: maxDepth(utils.MakeBinaryTreeFromLevelOrder([]int{1, -1, 2}, -1)), Expected: 2},
+	})
 }

@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 // The idea here is to iterate through each cell in the grid and count the number of edges that are not connected to the water
 // We start with the maximum possible perimeter (4 times the number of cells)
@@ -58,17 +58,17 @@ func islandPerimeter2(grid [][]int) int {
 }
 
 func main() {
-	fmt.Println("Solution 01")
-	fmt.Println(islandPerimeter1([][]int{{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}}) == 16)
-	fmt.Println(islandPerimeter1([][]int{{1}}) == 4)
-	fmt.Println(islandPerimeter1([][]int{{1, 0}}) == 4)
-	fmt.Println(islandPerimeter1([][]int{{1}, {1}, {1}, {0}, {1}, {1}}) == 14)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: [][]int{{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}}, Got: islandPerimeter1([][]int{{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}}), Expected: 16},
+		{Input: [][]int{{1}}, Got: islandPerimeter1([][]int{{1}}), Expected: 4},
+		{Input: [][]int{{1, 0}}, Got: islandPerimeter1([][]int{{1, 0}}), Expected: 4},
+		{Input: [][]int{{1}, {1}, {1}, {0}, {1}, {1}}, Got: islandPerimeter1([][]int{{1}, {1}, {1}, {0}, {1}, {1}}), Expected: 14},
+	})
 
-	fmt.Println()
-
-	fmt.Println("Solution 02")
-	fmt.Println(islandPerimeter2([][]int{{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}}) == 16)
-	fmt.Println(islandPerimeter2([][]int{{1}}) == 4)
-	fmt.Println(islandPerimeter2([][]int{{1, 0}}) == 4)
-	fmt.Println(islandPerimeter2([][]int{{1}, {1}, {1}, {0}, {1}, {1}}) == 14)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: [][]int{{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}}, Got: islandPerimeter2([][]int{{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}}), Expected: 16},
+		{Input: [][]int{{1}}, Got: islandPerimeter2([][]int{{1}}), Expected: 4},
+		{Input: [][]int{{1, 0}}, Got: islandPerimeter2([][]int{{1, 0}}), Expected: 4},
+		{Input: [][]int{{1}, {1}, {1}, {0}, {1}, {1}}, Got: islandPerimeter2([][]int{{1}, {1}, {1}, {0}, {1}, {1}}), Expected: 14},
+	})
 }

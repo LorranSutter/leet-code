@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"leetcode/utils"
 	"sort"
 )
 
@@ -34,9 +34,11 @@ func maxOperations(nums []int, k int) int {
 }
 
 func main() {
-	fmt.Println(maxOperations([]int{1, 2, 3, 4}, 5) == 2)
-	fmt.Println(maxOperations([]int{3, 1, 3, 4, 3}, 6) == 1)
-	fmt.Println(maxOperations([]int{2, 5, 4, 4, 1, 3, 4, 4, 1, 4, 4, 1, 2, 1, 2, 2, 3, 2, 4, 2}, 3) == 4)
-	fmt.Println(maxOperations([]int{3, 1, 5, 1, 1, 1, 1, 1, 2, 2, 3, 2, 2}, 1) == 0)
-	fmt.Println(maxOperations([]int{2, 2, 2, 3, 1, 1, 4, 1}, 3) == 3)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{[]int{1, 2, 3, 4}, 5}, Got: maxOperations([]int{1, 2, 3, 4}, 5), Expected: 2},
+		{Input: []any{[]int{3, 1, 3, 4, 3}, 6}, Got: maxOperations([]int{3, 1, 3, 4, 3}, 6), Expected: 1},
+		{Input: []any{[]int{2, 5, 4, 4, 1, 3, 4, 4, 1, 4, 4, 1, 2, 1, 2, 2, 3, 2, 4, 2}, 3}, Got: maxOperations([]int{2, 5, 4, 4, 1, 3, 4, 4, 1, 4, 4, 1, 2, 1, 2, 2, 3, 2, 4, 2}, 3), Expected: 4},
+		{Input: []any{[]int{3, 1, 5, 1, 1, 1, 1, 1, 2, 2, 3, 2, 2}, 1}, Got: maxOperations([]int{3, 1, 5, 1, 1, 1, 1, 1, 2, 2, 3, 2, 2}, 1), Expected: 0},
+		{Input: []any{[]int{2, 2, 2, 3, 1, 1, 4, 1}, 3}, Got: maxOperations([]int{2, 2, 2, 3, 1, 1, 4, 1}, 3), Expected: 3},
+	})
 }

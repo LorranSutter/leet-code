@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 // 25 ms / 6.7 MB
 func maxVowels1(s string, k int) int {
@@ -76,17 +76,17 @@ func isVowel(b byte) bool {
 }
 
 func main() {
-	fmt.Println("Solution 01")
-	fmt.Println(maxVowels1("abciiidef", 3) == 3)
-	fmt.Println(maxVowels1("aeiou", 2) == 2)
-	fmt.Println(maxVowels1("leetcode", 3) == 2)
-	fmt.Println(maxVowels1("weallloveyou", 7) == 4)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{"abciiidef", 3}, Got: maxVowels1("abciiidef", 3), Expected: 3},
+		{Input: []any{"aeiou", 2}, Got: maxVowels1("aeiou", 2), Expected: 2},
+		{Input: []any{"leetcode", 3}, Got: maxVowels1("leetcode", 3), Expected: 2},
+		{Input: []any{"weallloveyou", 7}, Got: maxVowels1("weallloveyou", 7), Expected: 4},
+	})
 
-	fmt.Println()
-
-	fmt.Println("Solution 02")
-	fmt.Println(maxVowels2("abciiidef", 3) == 3)
-	fmt.Println(maxVowels2("aeiou", 2) == 2)
-	fmt.Println(maxVowels2("leetcode", 3) == 2)
-	fmt.Println(maxVowels2("weallloveyou", 7) == 4)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{"abciiidef", 3}, Got: maxVowels2("abciiidef", 3), Expected: 3},
+		{Input: []any{"aeiou", 2}, Got: maxVowels2("aeiou", 2), Expected: 2},
+		{Input: []any{"leetcode", 3}, Got: maxVowels2("leetcode", 3), Expected: 2},
+		{Input: []any{"weallloveyou", 7}, Got: maxVowels2("weallloveyou", 7), Expected: 4},
+	})
 }

@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func findMaxConsecutiveOnes(nums []int) int {
 	maxCount, count := 0, 0
@@ -20,6 +20,8 @@ func findMaxConsecutiveOnes(nums []int) int {
 }
 
 func main() {
-	fmt.Println(findMaxConsecutiveOnes([]int{1, 1, 0, 1, 1, 1}) == 3)
-	fmt.Println(findMaxConsecutiveOnes([]int{1, 0, 1, 1, 0, 1}) == 2)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []int{1, 1, 0, 1, 1, 1}, Got: findMaxConsecutiveOnes([]int{1, 1, 0, 1, 1, 1}), Expected: 3},
+		{Input: []int{1, 0, 1, 1, 0, 1}, Got: findMaxConsecutiveOnes([]int{1, 0, 1, 1, 0, 1}), Expected: 2},
+	})
 }

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"leetcode/utils"
 )
 
@@ -88,22 +87,21 @@ func productExceptSelf3(nums []int) []int {
 }
 
 func main() {
-	fmt.Println("Solution 01")
-	fmt.Println(utils.DeepEqualSlices(productExceptSelf1([]int{1, 2, 3, 4}), []int{24, 12, 8, 6}))
-	fmt.Println(utils.DeepEqualSlices(productExceptSelf1([]int{-1, 1, 0, -3, 3}), []int{0, 0, 9, 0, 0}))
-	fmt.Println(utils.DeepEqualSlices(productExceptSelf1([]int{0, 1, 0, -3, 3}), []int{0, 0, 0, 0, 0}))
+	utils.RunTests([]utils.TestCase[[]int]{
+		{Input: []int{1, 2, 3, 4}, Got: productExceptSelf1([]int{1, 2, 3, 4}), Expected: []int{24, 12, 8, 6}},
+		{Input: []int{-1, 1, 0, -3, 3}, Got: productExceptSelf1([]int{-1, 1, 0, -3, 3}), Expected: []int{0, 0, 9, 0, 0}},
+		{Input: []int{0, 1, 0, -3, 3}, Got: productExceptSelf1([]int{0, 1, 0, -3, 3}), Expected: []int{0, 0, 0, 0, 0}},
+	})
 
-	fmt.Println()
+	utils.RunTests([]utils.TestCase[[]int]{
+		{Input: []int{1, 2, 3, 4}, Got: productExceptSelf2([]int{1, 2, 3, 4}), Expected: []int{24, 12, 8, 6}},
+		{Input: []int{-1, 1, 0, -3, 3}, Got: productExceptSelf2([]int{-1, 1, 0, -3, 3}), Expected: []int{0, 0, 9, 0, 0}},
+		{Input: []int{0, 1, 0, -3, 3}, Got: productExceptSelf2([]int{0, 1, 0, -3, 3}), Expected: []int{0, 0, 0, 0, 0}},
+	})
 
-	fmt.Println("Solution 02")
-	fmt.Println(utils.DeepEqualSlices(productExceptSelf2([]int{1, 2, 3, 4}), []int{24, 12, 8, 6}))
-	fmt.Println(utils.DeepEqualSlices(productExceptSelf2([]int{-1, 1, 0, -3, 3}), []int{0, 0, 9, 0, 0}))
-	fmt.Println(utils.DeepEqualSlices(productExceptSelf2([]int{0, 1, 0, -3, 3}), []int{0, 0, 0, 0, 0}))
-
-	fmt.Println()
-
-	fmt.Println("Solution 03")
-	fmt.Println(utils.DeepEqualSlices(productExceptSelf3([]int{1, 2, 3, 4}), []int{24, 12, 8, 6}))
-	fmt.Println(utils.DeepEqualSlices(productExceptSelf3([]int{-1, 1, 0, -3, 3}), []int{0, 0, 9, 0, 0}))
-	fmt.Println(utils.DeepEqualSlices(productExceptSelf3([]int{0, 1, 0, -3, 3}), []int{0, 0, 0, 0, 0}))
+	utils.RunTests([]utils.TestCase[[]int]{
+		{Input: []int{1, 2, 3, 4}, Got: productExceptSelf3([]int{1, 2, 3, 4}), Expected: []int{24, 12, 8, 6}},
+		{Input: []int{-1, 1, 0, -3, 3}, Got: productExceptSelf3([]int{-1, 1, 0, -3, 3}), Expected: []int{0, 0, 9, 0, 0}},
+		{Input: []int{0, 1, 0, -3, 3}, Got: productExceptSelf3([]int{0, 1, 0, -3, 3}), Expected: []int{0, 0, 0, 0, 0}},
+	})
 }

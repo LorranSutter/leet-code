@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"leetcode/utils"
+)
 
 // 170 ms / 9.93 MB
 func equalPairs1(grid [][]int) int {
@@ -53,15 +56,15 @@ func equalPairs2(grid [][]int) int {
 }
 
 func main() {
-	fmt.Println("Solution 01")
-	fmt.Println(equalPairs1([][]int{{13, 13}, {13, 13}}) == 4)
-	fmt.Println(equalPairs1([][]int{{3, 2, 1}, {1, 7, 6}, {2, 7, 7}}) == 1)
-	fmt.Println(equalPairs1([][]int{{3, 1, 2, 2}, {1, 4, 4, 5}, {2, 4, 2, 2}, {2, 4, 2, 2}}) == 3)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: [][]int{{13, 13}, {13, 13}}, Got: equalPairs1([][]int{{13, 13}, {13, 13}}), Expected: 4},
+		{Input: [][]int{{3, 2, 1}, {1, 7, 6}, {2, 7, 7}}, Got: equalPairs1([][]int{{3, 2, 1}, {1, 7, 6}, {2, 7, 7}}), Expected: 1},
+		{Input: [][]int{{3, 1, 2, 2}, {1, 4, 4, 5}, {2, 4, 2, 2}, {2, 4, 2, 2}}, Got: equalPairs1([][]int{{3, 1, 2, 2}, {1, 4, 4, 5}, {2, 4, 2, 2}, {2, 4, 2, 2}}), Expected: 3},
+	})
 
-	fmt.Println()
-
-	fmt.Println("Solution 02")
-	fmt.Println(equalPairs2([][]int{{13, 13}, {13, 13}}) == 4)
-	fmt.Println(equalPairs2([][]int{{3, 2, 1}, {1, 7, 6}, {2, 7, 7}}) == 1)
-	fmt.Println(equalPairs2([][]int{{3, 1, 2, 2}, {1, 4, 4, 5}, {2, 4, 2, 2}, {2, 4, 2, 2}}) == 3)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: [][]int{{13, 13}, {13, 13}}, Got: equalPairs2([][]int{{13, 13}, {13, 13}}), Expected: 4},
+		{Input: [][]int{{3, 2, 1}, {1, 7, 6}, {2, 7, 7}}, Got: equalPairs2([][]int{{3, 2, 1}, {1, 7, 6}, {2, 7, 7}}), Expected: 1},
+		{Input: [][]int{{3, 1, 2, 2}, {1, 4, 4, 5}, {2, 4, 2, 2}, {2, 4, 2, 2}}, Got: equalPairs2([][]int{{3, 1, 2, 2}, {1, 4, 4, 5}, {2, 4, 2, 2}, {2, 4, 2, 2}}), Expected: 3},
+	})
 }

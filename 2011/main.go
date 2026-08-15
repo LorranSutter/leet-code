@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 func finalValueAfterOperations(operations []string) int {
 	x := 0
@@ -16,7 +18,9 @@ func finalValueAfterOperations(operations []string) int {
 }
 
 func main() {
-	fmt.Println(finalValueAfterOperations([]string{"--X", "X++", "X++"}) == 1)
-	fmt.Println(finalValueAfterOperations([]string{"++X", "++X", "X++"}) == 3)
-	fmt.Println(finalValueAfterOperations([]string{"X++", "++X", "--X", "X--"}) == 0)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []string{"--X", "X++", "X++"}, Got: finalValueAfterOperations([]string{"--X", "X++", "X++"}), Expected: 1},
+		{Input: []string{"++X", "++X", "X++"}, Got: finalValueAfterOperations([]string{"++X", "++X", "X++"}), Expected: 3},
+		{Input: []string{"X++", "++X", "--X", "X--"}, Got: finalValueAfterOperations([]string{"X++", "++X", "--X", "X--"}), Expected: 0},
+	})
 }

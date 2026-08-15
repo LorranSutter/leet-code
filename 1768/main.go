@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"leetcode/utils"
+)
 
 // 2 ms / 3.97 MB
 func mergeAlternately1(word1 string, word2 string) string {
@@ -50,15 +52,15 @@ func mergeAlternately2(word1 string, word2 string) string {
 }
 
 func main() {
-	fmt.Println("Solution 01")
-	fmt.Println(mergeAlternately1("abc", "pqr") == "apbqcr")
-	fmt.Println(mergeAlternately1("ab", "pqrs") == "apbqrs")
-	fmt.Println(mergeAlternately1("abcd", "pq") == "apbqcd")
+	utils.RunTests([]utils.TestCase[string]{
+		{Input: []any{"abc", "pqr"}, Got: mergeAlternately1("abc", "pqr"), Expected: "apbqcr"},
+		{Input: []any{"ab", "pqrs"}, Got: mergeAlternately1("ab", "pqrs"), Expected: "apbqrs"},
+		{Input: []any{"abcd", "pq"}, Got: mergeAlternately1("abcd", "pq"), Expected: "apbqcd"},
+	})
 
-	fmt.Println()
-
-	fmt.Println("Solution 02")
-	fmt.Println(mergeAlternately2("abc", "pqr") == "apbqcr")
-	fmt.Println(mergeAlternately2("ab", "pqrs") == "apbqrs")
-	fmt.Println(mergeAlternately2("abcd", "pq") == "apbqcd")
+	utils.RunTests([]utils.TestCase[string]{
+		{Input: []any{"abc", "pqr"}, Got: mergeAlternately2("abc", "pqr"), Expected: "apbqcr"},
+		{Input: []any{"ab", "pqrs"}, Got: mergeAlternately2("ab", "pqrs"), Expected: "apbqrs"},
+		{Input: []any{"abcd", "pq"}, Got: mergeAlternately2("abcd", "pq"), Expected: "apbqcd"},
+	})
 }

@@ -1,4 +1,11 @@
 import math
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from utils.utils import run_tests
+
 
 class Solution:
     def totalWaviness(self, num1: int, num2: int) -> int:
@@ -21,7 +28,8 @@ class Solution:
         return waviness_count
 
 
-s = Solution()
-print(s.totalWaviness(120, 130) == 3)
-print(s.totalWaviness(198, 202) == 3)
-print(s.totalWaviness(4848, 4848) == 2)
+run_tests(Solution().totalWaviness, [
+    {"input": [120, 130], "expected": 3},
+    {"input": [198, 202], "expected": 3},
+    {"input": [4848, 4848], "expected": 2},
+])

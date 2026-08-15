@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+import "leetcode/utils"
 
 func minOperations(nums []int, k int) int {
 	sum := 0
@@ -11,7 +11,9 @@ func minOperations(nums []int, k int) int {
 }
 
 func main() {
-	fmt.Println(minOperations([]int{3, 9, 7}, 5) == 4)
-	fmt.Println(minOperations([]int{4, 1, 3}, 4) == 0)
-	fmt.Println(minOperations([]int{3, 2}, 6) == 5)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{[]int{3, 9, 7}, 5}, Got: minOperations([]int{3, 9, 7}, 5), Expected: 4},
+		{Input: []any{[]int{4, 1, 3}, 4}, Got: minOperations([]int{4, 1, 3}, 4), Expected: 0},
+		{Input: []any{[]int{3, 2}, 6}, Got: minOperations([]int{3, 2}, 6), Expected: 5},
+	})
 }

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"leetcode/utils"
 	"slices"
 )
 
@@ -31,8 +31,10 @@ func maxFreqSum(s string) int {
 }
 
 func main() {
-	fmt.Println(maxFreqSum("successes") == 6)
-	fmt.Println(maxFreqSum("aeiaeia") == 3)
-	fmt.Println(maxFreqSum("c") == 1)
-	fmt.Println(maxFreqSum("i") == 1)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: "successes", Got: maxFreqSum("successes"), Expected: 6},
+		{Input: "aeiaeia", Got: maxFreqSum("aeiaeia"), Expected: 3},
+		{Input: "c", Got: maxFreqSum("c"), Expected: 1},
+		{Input: "i", Got: maxFreqSum("i"), Expected: 1},
+	})
 }

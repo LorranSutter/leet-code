@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"leetcode/utils"
 	"sort"
 )
 
@@ -39,13 +39,13 @@ func findFinalValue2(nums []int, original int) int {
 }
 
 func main() {
-	fmt.Println("Solution 01")
-	fmt.Println(findFinalValue1([]int{5, 3, 6, 1, 12}, 3) == 24)
-	fmt.Println(findFinalValue1([]int{2, 7, 9}, 4) == 4)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{[]int{5, 3, 6, 1, 12}, 3}, Got: findFinalValue1([]int{5, 3, 6, 1, 12}, 3), Expected: 24},
+		{Input: []any{[]int{2, 7, 9}, 4}, Got: findFinalValue1([]int{2, 7, 9}, 4), Expected: 4},
+	})
 
-	fmt.Println()
-
-	fmt.Println("Solution 02")
-	fmt.Println(findFinalValue2([]int{5, 3, 6, 1, 12}, 3) == 24)
-	fmt.Println(findFinalValue2([]int{2, 7, 9}, 4) == 4)
+	utils.RunTests([]utils.TestCase[int]{
+		{Input: []any{[]int{5, 3, 6, 1, 12}, 3}, Got: findFinalValue2([]int{5, 3, 6, 1, 12}, 3), Expected: 24},
+		{Input: []any{[]int{2, 7, 9}, 4}, Got: findFinalValue2([]int{2, 7, 9}, 4), Expected: 4},
+	})
 }
