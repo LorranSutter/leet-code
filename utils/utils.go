@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"reflect"
 )
 
 type ListNode struct {
@@ -196,4 +197,39 @@ func DeepEqualMatrix[T comparable](m1, m2 [][]T) bool {
 	}
 
 	return true
+}
+
+type TestCase[R any] struct {
+	Input    any
+	Got      R
+	Expected R
+}
+
+func RunTests[R any](cases []TestCase[R]) {
+	type failure struct {
+		index    int
+		input    any
+		got      R
+		expected R
+	}
+
+	var failures []failure
+	for i, tc := range cases {
+		if !reflect.DeepEqual(tc.Got, tc.Expected) {
+			failures = append(failures, failure{i, tc.Input, tc.Got, tc.Expected})
+		}
+	}
+
+	if len(failures) == 0 {
+		fmt.Printf("✅ All %d test case(s) passed\n", len(cases))
+		return
+	}
+
+	fmt.Printf("❌ %d/%d test case(s) failed\n", len(failures), len(cases))
+	for _, f := range failures {
+		fmt.Printf("  Case %d:\n", f.index)
+		fmt.Printf("    Input:    %v\n", f.input)
+		fmt.Printf("    Expected: %v\n", f.expected)
+		fmt.Printf("    Got:      %v\n", f.got)
+	}
 }

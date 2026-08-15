@@ -12,6 +12,8 @@ Ensure you have [Go](https://go.dev/) installed (version 1.24+ is recommended).
 
 Some problems are solved in TypeScript instead. Ensure you have [Node.js](https://nodejs.org/) installed (version 23.6+ is recommended) — Node runs `.ts` files directly, so no `ts-node`, `tsx`, or `package.json` is needed.
 
+Some problems are solved in Python instead. Ensure you have [Python](https://www.python.org/) installed (version 3.9+ is recommended).
+
 No additional installation or virtual environments are needed.
 
 ## ✨ Creating a New Problem
@@ -21,15 +23,17 @@ To create a new problem structure, use the `create_problem.sh` script:
 ```bash
 ./create_problem.sh <number>       # Go (default)
 ./create_problem.sh <number> --ts  # TypeScript
+./create_problem.sh <number> --py  # Python
 ```
 
 Example:
 ```bash
 ./create_problem.sh 1
 ./create_problem.sh 2 --ts
+./create_problem.sh 3 --py
 ```
 
-This will create a folder structure (e.g. `0001/`) with either `main.go` or `main.ts` as a starter template for the solution.
+This will create a folder structure (e.g. `0001/`) with `main.go`, `main.ts`, or `main.py` as a starter template for the solution, wired up to the shared test runner (see below).
 
 ## 🚀 Running Solutions
 
@@ -38,9 +42,32 @@ You can run solutions directly:
 ```bash
 go run ./0001/main.go
 node ./0002/main.ts
+python3 ./0003/main.py
 ```
 
 Replace the folder number with the specific problem you want to execute.
+
+## ✅ Testing Solutions
+
+Each language has a shared test runner in `utils/` (`RunTests` in Go, `runTests` in TypeScript, `run_tests` in Python) that takes a list of input/expected-output pairs, runs them against the solution, and prints a single success message if everything passes — or, for each failing case, the input, the expected output, and what was actually returned. Solution files call it directly instead of asserting each case by hand:
+
+```go
+utils.RunTests([]utils.TestCase[int]{
+    {Input: []int{1, 2, 3}, Got: solve([]int{1, 2, 3}), Expected: 0},
+})
+```
+
+```ts
+runTests(solve, [
+    { input: [[1, 2, 3]], expected: 0 },
+])
+```
+
+```python
+run_tests(Solution().solve, [
+    {"input": [[1, 2, 3]], "expected": 0},
+])
+```
 
 ## 🔄 Updating Progress Summary
 
