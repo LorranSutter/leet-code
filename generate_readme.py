@@ -8,9 +8,23 @@ def main():
     # 1. Scan the repository for subdirectories matching \d{4}
     # Using regex to match exactly 4 digits
     folder_pattern = re.compile(r'^\d{4}$')
+    todo_marker = "TODO Implement solution"
     solved_count = 0
     for name in os.listdir(repo_dir):
-        if os.path.isdir(os.path.join(repo_dir, name)) and folder_pattern.match(name):
+        folder_path = os.path.join(repo_dir, name)
+        if not os.path.isdir(folder_path) or not folder_pattern.match(name):
+            continue
+
+        is_unsolved = False
+        for main_file in ("main.go", "main.ts", "main.py"):
+            main_path = os.path.join(folder_path, main_file)
+            if os.path.exists(main_path):
+                with open(main_path, 'r', encoding='utf-8') as f:
+                    if todo_marker in f.read():
+                        is_unsolved = True
+                break
+
+        if not is_unsolved:
             solved_count += 1
             
     # 2. Update/create README.md

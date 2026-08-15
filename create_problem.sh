@@ -33,6 +33,7 @@ if [ "$2" = "--ts" ]; then
 import { runTests } from "../utils/utils.ts"
 
 function solve(nums: number[]): number {
+    // TODO Implement solution
     return 0
 }
 
@@ -55,6 +56,7 @@ from utils.utils import run_tests
 
 class Solution:
     def solve(self, nums: list[int]) -> int:
+        # TODO Implement solution
         return 0
 
 
@@ -74,6 +76,7 @@ import (
 )
 
 func solve(nums []int) int {
+    // TODO Implement solution
     return 0
 }
 
