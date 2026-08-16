@@ -1,5 +1,60 @@
 import { isDeepStrictEqual } from "node:util"
 
+export class TreeNode {
+    val: number
+    left: TreeNode | null
+    right: TreeNode | null
+    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+        this.val = (val === undefined ? 0 : val)
+        this.left = (left === undefined ? null : left)
+        this.right = (right === undefined ? null : right)
+    }
+}
+
+export function makeBinaryTree(nums: (number | null)[]): TreeNode | null {
+    if (!nums || nums.length == 0) {
+        return null
+    }
+
+    const root = new TreeNode(nums[0] as number)
+
+    for (let i = 1; i < nums.length; i++) {
+        addBinaryTreeNode(root, nums[i])
+    }
+
+    return root
+}
+
+export function printTree(root: TreeNode | null) {
+    if (!root) {
+        return
+    }
+
+    process.stdout.write(`${root.val} `);
+    printTree(root.left)
+    printTree(root.right)
+}
+
+// Add TreeNode to the binary tree
+function addBinaryTreeNode(root: TreeNode, val: number | null) {
+    if (!val) {
+        return
+    }
+    if (val < root.val) {
+        if (root.left === null) {
+            root.left = new TreeNode(val)
+        } else {
+            addBinaryTreeNode(root.left, val)
+        }
+    } else {
+        if (root.right === null) {
+            root.right = new TreeNode(val)
+        } else {
+            addBinaryTreeNode(root.right, val)
+        }
+    }
+}
+
 type TestCase<Args extends unknown[], R> = {
     input: Args
     expected: R
