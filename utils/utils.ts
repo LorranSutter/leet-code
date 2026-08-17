@@ -25,6 +25,38 @@ export function makeBinaryTree(nums: (number | null)[]): TreeNode | null {
     return root
 }
 
+// MakeBinaryTreeFromLevelOrder creates a binary tree from level-order traversal array
+export function makeBinaryTreeFromLevelOrder(nums: (number | null)[], nullValue: number | null): TreeNode | null {
+    if (nums.length === 0 || nums[0] === nullValue) {
+        return null
+    }
+
+    const root = new TreeNode(nums[0])
+    const queue = [root]
+    let i = 1
+
+    while (queue.length > 0 && i < nums.length) {
+        let current = queue[0]
+        queue.shift()
+
+        // Process left child
+        if (i < nums.length && nums[i] != nullValue) {
+            current.left = new TreeNode(nums[i])
+            queue.push(current.left)
+        }
+        i++
+
+        // Process right child
+        if (i < nums.length && nums[i] != nullValue) {
+            current.right = new TreeNode(nums[i])
+            queue.push(current.right)
+        }
+        i++
+    }
+
+    return root
+}
+
 export function printTree(root: TreeNode | null) {
     if (!root) {
         return
@@ -62,13 +94,14 @@ type TestCase<Args extends unknown[], R> = {
 
 export function runTests<Args extends unknown[], R>(
     fn: (...args: Args) => R,
-    cases: TestCase<Args, R>[]
+    cases: TestCase<Args, R>[],
+    isEqual: (actual: R, expected: R) => boolean = isDeepStrictEqual
 ): void {
     const failures: { index: number; input: Args; expected: R; actual: R }[] = []
 
     cases.forEach((testCase, index) => {
         const actual = fn(...testCase.input)
-        if (!isDeepStrictEqual(actual, testCase.expected)) {
+        if (!isEqual(actual, testCase.expected)) {
             failures.push({ index, input: testCase.input, expected: testCase.expected, actual })
         }
     })
