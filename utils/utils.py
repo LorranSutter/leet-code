@@ -1,6 +1,11 @@
 from typing import Any, Callable
 
 
+def print_matrix(matrix: list[list[Any]], separator: str = " ") -> None:
+    for row in matrix:
+        print(separator.join(str(value) for value in row))
+
+
 def run_tests(fn: Callable[..., Any], cases: list[dict[str, Any]]) -> None:
     failures = []
 

@@ -57,6 +57,12 @@ export function makeBinaryTreeFromLevelOrder(nums: (number | null)[], nullValue:
     return root
 }
 
+export function printMatrix(matrix: (string | number)[][], separator: string = " ") {
+    for (const row of matrix) {
+        console.log(row.join(separator))
+    }
+}
+
 export function printTree(root: TreeNode | null) {
     if (!root) {
         return
