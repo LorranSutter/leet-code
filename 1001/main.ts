@@ -75,7 +75,6 @@ function gridIllumination(n: number, lamps: number[][], queries: number[][]): nu
                 }
                 const idx = `${r},${c}`
                 if (lamp_set.has(idx)) {
-                    // console.log("lamp deleted", idx)
                     lamp_set.delete(idx)
                     setIlluminated(idx, -1)
                 }
