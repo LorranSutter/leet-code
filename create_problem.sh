@@ -18,14 +18,24 @@ fi
 # Format number with leading zeros (4 digits)
 folder_name=$(printf "%04d" "$1")
 
-# Create folder
-if [ -d "$folder_name" ]; then
-    echo "Error: Folder $folder_name already exists"
-    exit 1
-fi
+# Determine which file this invocation would create
+case "$2" in
+    --ts) target_file="main.ts" ;;
+    --py) target_file="main.py" ;;
+    *) target_file="main.go" ;;
+esac
 
-mkdir "$folder_name"
-echo "Created folder: $folder_name"
+# Create folder if needed, otherwise reuse the existing one
+if [ -d "$folder_name" ]; then
+    if [ -f "$folder_name/$target_file" ]; then
+        echo "Error: $folder_name/$target_file already exists"
+        exit 1
+    fi
+    echo "Folder $folder_name already exists, adding $target_file"
+else
+    mkdir "$folder_name"
+    echo "Created folder: $folder_name"
+fi
 
 if [ "$2" = "--ts" ]; then
     # Create main.ts file

@@ -15,16 +15,17 @@ def main():
         if not os.path.isdir(folder_path) or not folder_pattern.match(name):
             continue
 
-        is_unsolved = False
+        is_solved = False
         for main_file in ("main.go", "main.ts", "main.py"):
             main_path = os.path.join(folder_path, main_file)
-            if os.path.exists(main_path):
-                with open(main_path, 'r', encoding='utf-8') as f:
-                    if todo_marker in f.read():
-                        is_unsolved = True
-                break
+            if not os.path.exists(main_path):
+                continue
+            with open(main_path, 'r', encoding='utf-8') as f:
+                if todo_marker not in f.read():
+                    is_solved = True
+                    break
 
-        if not is_unsolved:
+        if is_solved:
             solved_count += 1
             
     # 2. Update/create README.md

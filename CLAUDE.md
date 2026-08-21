@@ -8,7 +8,7 @@ This is a personal LeetCode solutions repository. Each problem lives in its own 
 
 ## Commands
 
-- Create a new problem folder: `./create_problem.sh <number>` (Go, default), `./create_problem.sh <number> --ts` (TypeScript), or `./create_problem.sh <number> --py` (Python). Refuses to overwrite an existing folder.
+- Create a new problem folder: `./create_problem.sh <number>` (Go, default), `./create_problem.sh <number> --ts` (TypeScript), or `./create_problem.sh <number> --py` (Python). If the folder already exists, it adds the requested language's file to it (e.g. adding `--py` to a folder that already has `main.go`); it still refuses to overwrite an existing file for that language.
 - Run a Go solution: `go run ./<folder>/main.go` (e.g. `go run ./0001/main.go`)
 - Run a TypeScript solution: `node ./<folder>/main.ts` (Node 23.6+ runs `.ts` directly — no ts-node/tsx/package.json)
 - Run a Python solution: `python3 ./<folder>/main.py`
