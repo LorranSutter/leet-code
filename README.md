@@ -1,6 +1,6 @@
 # 💡 LeetCode
 
-[![Dashboard](https://img.shields.io/badge/Dashboard-coding--challenges-blue?style=for-the-badge)](https://github.com/LorranSutter/coding-challenges) <!-- SUMMARY:START -->[![Solved Challenges](https://img.shields.io/badge/Solved%20Challenges-145-brightgreen?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/)<!-- SUMMARY:END -->
+[![Dashboard](https://img.shields.io/badge/Dashboard-coding--challenges-blue?style=for-the-badge)](https://github.com/LorranSutter/coding-challenges) <!-- SUMMARY:START -->[![Solved Challenges](https://img.shields.io/badge/Solved%20Challenges-146-brightgreen?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/)<!-- SUMMARY:END -->
 
 This repository contains my solutions for [LeetCode](https://leetcode.com/) problems.
 
