@@ -1,6 +1,73 @@
 from typing import Any, Callable
 
 
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+def make_binary_tree(nums: list[int]) -> TreeNode | None:
+    if not nums:
+        return None
+
+    root = TreeNode(nums[0])
+
+    for val in nums[1:]:
+        _add_binary_tree_node(root, val)
+
+    return root
+
+
+def _add_binary_tree_node(root: TreeNode, val: int) -> None:
+    if val < root.val:
+        if root.left is None:
+            root.left = TreeNode(val)
+        else:
+            _add_binary_tree_node(root.left, val)
+    else:
+        if root.right is None:
+            root.right = TreeNode(val)
+        else:
+            _add_binary_tree_node(root.right, val)
+
+
+def make_binary_tree_from_level_order(
+    nums: list[int], null_value: int = None
+) -> TreeNode | None:
+    if not nums or nums[0] == null_value:
+        return None
+
+    root = TreeNode(nums[0])
+    queue = [root]
+    i = 1
+
+    while queue and i < len(nums):
+        current = queue.pop(0)
+
+        if i < len(nums) and nums[i] != null_value:
+            current.left = TreeNode(nums[i])
+            queue.append(current.left)
+        i += 1
+
+        if i < len(nums) and nums[i] != null_value:
+            current.right = TreeNode(nums[i])
+            queue.append(current.right)
+        i += 1
+
+    return root
+
+
+def print_tree(root: TreeNode | None) -> None:
+    if root is None:
+        return
+
+    print(root.val, end=" ")
+    print_tree(root.left)
+    print_tree(root.right)
+
+
 def print_matrix(matrix: list[list[Any]], separator: str = " ") -> None:
     for row in matrix:
         print(separator.join(str(value) for value in row))
