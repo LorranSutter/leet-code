@@ -2,6 +2,7 @@ package main
 
 import (
 	"leetcode/utils"
+	"math"
 )
 
 type TreeNode struct {
@@ -10,67 +11,22 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func rightIsValidBST(num int, root *TreeNode) bool {
-	if root == nil {
+func valid(node *TreeNode, minLeft, minRight int) bool {
+	if node == nil {
 		return true
 	}
-	if root.Val <= num {
+	if !(node.Val > minLeft && node.Val < minRight) {
 		return false
 	}
-	if root.Left == nil && root.Right == nil {
-		return true
-	}
-	if root.Left != nil {
-		if root.Left.Val >= root.Val {
-			return false
-		}
-	}
-	if root.Right != nil {
-		if root.Right.Val <= root.Val {
-			return false
-		}
-	}
 
-	return leftIsValidBST(num, root.Left) && rightIsValidBST(num, root.Right)
-}
-
-func leftIsValidBST(num int, root *TreeNode) bool {
-	if root == nil {
-		return true
-	}
-	if root.Val >= num {
-		return false
-	}
-	if root.Left == nil && root.Right == nil {
-		return true
-	}
-	if root.Left != nil {
-		if root.Left.Val >= root.Val {
-			return false
-		}
-	}
-	if root.Right != nil {
-		if root.Right.Val <= root.Val {
-			return false
-		}
-	}
-
-	return leftIsValidBST(num, root.Left) && rightIsValidBST(num, root.Right)
+	return valid(node.Left, minLeft, node.Val) && valid(node.Right, node.Val, minRight)
 }
 
 func isValidBST(root *TreeNode) bool {
-	if root == nil {
-		return true
-	}
-	if root.Left == nil && root.Right == nil {
-		return true
-	}
-
-	return leftIsValidBST(root.Val, root.Left) && rightIsValidBST(root.Val, root.Right)
+	return valid(root, math.MinInt, math.MaxInt)
 }
 
 func main() {
-	// TODO Implement solution
 	//  2
 	// / \
 	//1   3
@@ -136,6 +92,7 @@ func main() {
 	//4   6
 	//   / \
 	//  3   7
+	println("Here")
 	root = &TreeNode{Val: 5}
 	root.Left = &TreeNode{Val: 4}
 	root.Right = &TreeNode{Val: 6}
@@ -146,8 +103,8 @@ func main() {
 	utils.RunTests([]utils.TestCase[bool]{
 		{Input: []int{2, 1, 3}, Got: c1, Expected: true},
 		{Input: []int{5, 1, 4, 3, 6}, Got: c2, Expected: false},
-		{Input: []int{5, 1, 6, 5, 7}, Got: c3, Expected: true},
-		{Input: []int{5, 4, 5}, Got: c4, Expected: true},
+		{Input: []int{5, 1, 6, 5, 7}, Got: c3, Expected: false},
+		{Input: []int{5, 4, 5}, Got: c4, Expected: false},
 		{Input: []int{5, 4, 1}, Got: c5, Expected: false},
 		{Input: []int{2, 2, 2}, Got: c6, Expected: false},
 		{Input: []int{5, 4, 6, 3, 7}, Got: c7, Expected: false},
