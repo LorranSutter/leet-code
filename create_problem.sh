@@ -57,6 +57,7 @@ elif [ "$2" = "--py" ]; then
     # Create main.py file
     cat > "$folder_name/main.py" << 'EOF'
 import sys
+from typing import List
 from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
@@ -65,7 +66,7 @@ from utils.utils import run_tests
 
 
 class Solution:
-    def solve(self, nums: list[int]) -> int:
+    def solve(self, nums: List[int]) -> int:
         # TODO Implement solution
         return 0
 
