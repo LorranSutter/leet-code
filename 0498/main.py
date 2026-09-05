@@ -9,7 +9,9 @@ from utils.utils import run_tests
 """
 Solution:
 
-- We can enumerate the diagonals. For the example below, we have
+- The key insight is that every cell on the same anti-diagonal shares the same `i + j` value, so instead
+  of walking the matrix diagonal by diagonal we can make a single pass over it and drop each cell
+  straight into `diagonals[i + j]`. For the example below, `i + j` gives us
 
     1 2 3 -> 0 1 2
     4 5 6 -> 1 2 3
@@ -21,11 +23,10 @@ Solution:
     diag 3 -> 6 8
     diag 4 -> 9
 
-- The idea is to generate the diagonals, then concatenate them.
-- We start grouping the diagonals by their index
-- By default, the diagonal is built from top to down. This is correct
-  for the diagonals in odd indexes. So, we have to reverse the
-  diagonal for even indexes
+- The idea is to generate the diagonals first, then concatenate them.
+- By default, each diagonal comes out built top to bottom, which is already the direction the output
+  wants for odd-indexed diagonals. So we only reverse the even-indexed diagonals before flattening
+  everything into the result, which gives the zig-zag order the problem asks for.
 """
 
 
