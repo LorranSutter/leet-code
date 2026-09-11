@@ -5,6 +5,7 @@ import (
 )
 
 func mergeKLists(lists []*utils.ListNode) *utils.ListNode {
+	// TODO Implement solution
 	if len(lists) == 0 {
 		return &utils.ListNode{}
 	}
