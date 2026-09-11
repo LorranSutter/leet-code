@@ -13,7 +13,6 @@ Preprocessing:
   simpler, since we just have to check a number instead of a tuple, and any row that never shows up in
   reservedSeats needs no checking at all.
 
-Part 1:
 - The key insight is that seats 1 and 10 belong to none of the three blocks, so they can't matter and we
   ignore them. That leaves three blocks over seats 2-9, and here's how they line up:
 
