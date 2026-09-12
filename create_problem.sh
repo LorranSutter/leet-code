@@ -48,7 +48,7 @@ function solve(nums: number[]): number {
 }
 
 runTests(solve, [
-    { input: [[1, 2, 3]], expected: 0 },
+    { input: [], expected:  },
 ])
 EOF
 
@@ -72,7 +72,7 @@ class Solution:
 
 
 run_tests(Solution().solve, [
-    {"input": [[1, 2, 3]], "expected": 0},
+    {"input": [[]], "expected": },
 ])
 EOF
 
@@ -93,7 +93,7 @@ func solve(nums []int) int {
 
 func main() {
     utils.RunTests([]utils.TestCase[int]{
-        {Input: []int{1, 2, 3}, Got: solve([]int{1, 2, 3}), Expected: 0},
+        {Input: []int{}, Got: solve([]int{}), Expected: },
     })
 }
 EOF
