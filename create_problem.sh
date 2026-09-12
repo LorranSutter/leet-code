@@ -72,7 +72,7 @@ class Solution:
 
 
 run_tests(Solution().solve, [
-    {"input": [[]], "expected": },
+    {"input": [], "expected": },
 ])
 EOF
 
