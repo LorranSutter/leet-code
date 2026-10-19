@@ -1,6 +1,21 @@
 from typing import Any, Callable
 
 
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+def make_list(nums: list[int]) -> ListNode | None:
+    head = None
+
+    for val in reversed(nums):
+        head = ListNode(val, head)
+
+    return head
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -137,10 +152,27 @@ def equal_matrix_unordered(m1: list[list[Any]], m2: list[list[Any]]) -> bool:
     return canonical(m1) == canonical(m2)
 
 
+def equal_lists(l1: ListNode | None, l2: ListNode | None) -> bool:
+    while l1 is not None and l2 is not None:
+        if l1.val != l2.val:
+            return False
+        l1 = l1.next
+        l2 = l2.next
+
+    return l1 is None and l2 is None
+
+
+def _default_equal(actual: Any, expected: Any) -> bool:
+    if isinstance(actual, ListNode) or isinstance(expected, ListNode):
+        return equal_lists(actual, expected)
+
+    return actual == expected
+
+
 def run_tests(
     fn: Callable[..., Any],
     cases: list[dict[str, Any]],
-    is_equal: Callable[[Any, Any], bool] = lambda actual, expected: actual == expected,
+    is_equal: Callable[[Any, Any], bool] = _default_equal,
 ) -> None:
     failures = []
 
